@@ -63,6 +63,16 @@ namespace evencat {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundUsersPanel {
+            get {
+                object obj = ResourceManager.GetObject("backgroundUsersPanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap evencatLogoBlack {
             get {
                 object obj = ResourceManager.GetObject("evencatLogoBlack", resourceCulture);
@@ -93,9 +103,39 @@ namespace evencat {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logOutIcon {
+            get {
+                object obj = ResourceManager.GetObject("logOutIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap menuIconWhite {
             get {
                 object obj = ResourceManager.GetObject("menuIconWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spacesManagementIcon {
+            get {
+                object obj = ResourceManager.GetObject("spacesManagementIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usersManagementIcon {
+            get {
+                object obj = ResourceManager.GetObject("usersManagementIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

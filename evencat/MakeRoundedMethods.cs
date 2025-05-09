@@ -73,7 +73,8 @@ namespace evencat
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderSize = 0; // Sin borde
             button.ForeColor = Color.White; // Texto blanco
-            button.Font = new Font("Arial", 12, FontStyle.Bold);
+            //button.Font = new Font("Arial", 12, FontStyle.Bold);
+            button.Font = new Font(FontManager.FontCollection.Families[0], 15);
         }
 
         public static void makeRoundeSmallButton(Button button, int radius, Color foreColor, Color backColor)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -9,13 +11,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using evencat.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace evencat
 {
     public partial class FormLogIn : Form
     {
         private PrivateFontCollection fontCollection;
-
+        public int UsuarioId { get; private set; }
+        public string Email { get; private set; }
+        public string Rol { get; private set; }
+        public bool LoginSuccess { get; private set; } = false;
 
         public FormLogIn()
         {
@@ -55,6 +62,7 @@ namespace evencat
             textBoxEmail.Left = (panelLogin.Width - textBoxEmail.Width) / 2;
 
             textBoxPassword.Left = (panelLogin.Width - textBoxPassword.Width) / 2;
+
 
             buttonLogIn.Left = (panelLogin.Width - buttonLogIn.Width) / 2;
 
@@ -122,14 +130,127 @@ namespace evencat
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            //formSpacesManagement formSpacesManagement = new formSpacesManagement();
+            if (string.IsNullOrWhiteSpace(textBoxEmail.Text) || string.IsNullOrWhiteSpace(textBoxPassword.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            VerifyCredentials();
+        }
 
-            //formSpacesManagement.ShowDialog();
+        private void VerifyCredentials()
+        {
+            try
+            {
+                var usuario = Orm.bd.Usuaris
+                    .FirstOrDefault(u => u.email == textBoxEmail.Text.Trim());
 
-            this.DialogResult = DialogResult.OK;
+                if (usuario != null)
+                {
+                    if (textBoxPassword.Text == usuario.password_hash)
+                    {
+
+                        UserSession.UserId = usuario.usuari_id;
+                        UserSession.Email = usuario.email;
+                        UserSession.Role = usuario.rol;
+
+                        LoginSuccess = true;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Contraseña incorrecta.", "Error",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario no encontrado.", "Error",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al verificar credenciales: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxPassword_Enter(object sender, EventArgs e)
+        {
+            textBoxPassword.PasswordChar = '*';
+        }
+
+        private void textBoxPassword_Leave(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(textBoxPassword.Text))
+            {
+
+                textBoxPassword.Text = "Password";
+
+                textBoxPassword.PasswordChar = '\0';
+
+                textBoxPassword.ForeColor = Color.Gray;
+
+            }
+            else {
+
+                textBoxPassword.PasswordChar = '*';
+
+            }
+
 
         }
+
+
+
+
+        /* VerifyCredentials CON ENCRIPTACION
+        private void VerifyCredentials()
+        {
+            try
+            {
+                using (var db = new evencatEntities()) // O puedes usar Orm.bd si prefieres
+                {
+                    var usuario = db.Usuaris
+                        .FirstOrDefault(u => u.email == textBoxEmail.Text.Trim() ); // Asumiendo que tienes campo 'actiu'
+
+                    if (usuario != null)
+                    {
+                        // Verificar contraseña con BCrypt (igual que en tu otro proyecto)
+                        if (BCrypt.Net.BCrypt.EnhancedVerify(textBoxPassword.Text, usuario.password_hash, HashType.SHA512))
+                        {
+                            UsuarioId = usuario.usuari_id;
+                            Email = usuario.email;
+                            Rol = usuario.rol;
+
+                            LoginSuccess = true;
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Contraseña incorrecta.", "Error",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario no encontrado o inactivo.", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al verificar credenciales: {ex.Message}", "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }*/
     }
 }
+
 

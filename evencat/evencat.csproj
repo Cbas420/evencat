@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +57,24 @@
   <ItemGroup>
     <Compile Include="AppColors.cs" />
     <Compile Include="FontManager.cs" />
+    <Compile Include="FormCreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateUser.Designer.cs">
+      <DependentUpon>FormCreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEventsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEventsManagement.Designer.cs">
+      <DependentUpon>FormEventsManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReservationsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReservationsManagement.Designer.cs">
+      <DependentUpon>FormReservationsManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +112,39 @@
       <DependentUpon>FormUsersManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="MakeRoundedMethods.cs" />
+    <Compile Include="Models\Butaques.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Esdeveniments.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Espais.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EspaisOrm.cs" />
+    <Compile Include="Models\ModelEvencat.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEvencat.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelEvencat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelEvencat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelEvencat.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Orm.cs" />
+    <Compile Include="Models\Reserves.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuaris.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarisOrm.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -95,6 +155,26 @@
     <Compile Include="TransparentPanels.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserSession.cs" />
+    <Content Include="Models\ModelEvencat.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelEvencat.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEvencat.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelEvencat.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelEvencat.edmx</DependentUpon>
+      <LastGenOutput>ModelEvencat.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="FormCreateUser.resx">
+      <DependentUpon>FormCreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEventsManagement.resx">
+      <DependentUpon>FormEventsManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReservationsManagement.resx">
+      <DependentUpon>FormReservationsManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +215,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Models\ModelEvencat.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelEvencat.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelEvencat.edmx.diagram">
+      <DependentUpon>ModelEvencat.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\evencat.Models.Butaques.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.Esdeveniments.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.Espais.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.evencatEntities.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.Orm.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.Reserves.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.Usuaris.datasource" />
+    <None Include="Properties\DataSources\evencat.Models.UsuarisOrm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -147,6 +243,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

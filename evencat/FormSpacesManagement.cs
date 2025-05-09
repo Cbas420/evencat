@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using evencat.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace evencat
@@ -15,6 +16,7 @@ namespace evencat
     public partial class FormSpacesManagement : Form
     {
 
+        public bool VolverAlMenu { get; private set; } = false;
 
         public FormSpacesManagement()
         {
@@ -35,6 +37,16 @@ namespace evencat
 
         private void formSpacesManagement_Load(object sender, EventArgs e)
         {
+            dataGridViewSpaces.DataSource = EspaisOrm.Select();
+
+            loadDesigns();
+
+        }
+
+
+        private void loadDesigns() {
+
+            dataGridViewSpaces.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
 
@@ -65,6 +77,7 @@ namespace evencat
             MakeRoundedMethods.makeRoundeSmallButton(buttonCreateSpace, 15, Color.Black, AppColors.grayBackground);
             MakeRoundedMethods.makeRoundeSmallButton(buttonEdit, 15, Color.Black, AppColors.grayBackground);
             MakeRoundedMethods.makeRoundeSmallButton(buttonDelete, 15, Color.White, Color.Red);
+            MakeRoundedMethods.makeRoundeSmallButton(buttonCheckAllActivities, 15, Color.White, AppColors.purpleButton);
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxCurrentState, 10, "Current state");
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxOrderBy, 10, "Order by");
             MakeRoundedMethods.makeRoundedPanel(panelDataGridView, 35);
@@ -93,7 +106,13 @@ namespace evencat
             formUsersManagement.Show();
         }
 
+        private void pictureBoxMenuIcon_Click(object sender, EventArgs e)
+        {
 
+            this.DialogResult = DialogResult.OK;
+
+            this.Close();
+        }
 
     }
 }

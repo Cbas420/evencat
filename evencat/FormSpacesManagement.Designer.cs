@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelSpacesManagement = new System.Windows.Forms.Label();
             this.panelSearch = new System.Windows.Forms.Panel();
@@ -41,18 +42,21 @@
             this.buttonCreateActivity = new System.Windows.Forms.Button();
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dataGridViewSpaces = new System.Windows.Forms.DataGridView();
-            this.ColumnSpaceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpaceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpaceLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpaceMeasures = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSpaceFixedChairs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
+            this.buttonCheckAllActivities = new System.Windows.Forms.Button();
+            this.espaiidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ubicacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metresquadratsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cadiresfixesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceSpacesDataGrid = new System.Windows.Forms.BindingSource(this.components);
             this.panelSearch.SuspendLayout();
             this.panelDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpaces)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpacesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSpacesManagement
@@ -166,6 +170,7 @@
             // 
             // dataGridViewSpaces
             // 
+            this.dataGridViewSpaces.AutoGenerateColumns = false;
             this.dataGridViewSpaces.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSpaces.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSpaces.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -180,52 +185,18 @@
             this.dataGridViewSpaces.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSpaces.ColumnHeadersHeight = 35;
             this.dataGridViewSpaces.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnSpaceId,
-            this.ColumnSpaceName,
-            this.ColumnSpaceLocation,
-            this.ColumnSpaceMeasures,
-            this.ColumnSpaceFixedChairs});
+            this.espaiidDataGridViewTextBoxColumn,
+            this.nomDataGridViewTextBoxColumn,
+            this.ubicacioDataGridViewTextBoxColumn,
+            this.metresquadratsDataGridViewTextBoxColumn,
+            this.cadiresfixesDataGridViewTextBoxColumn});
+            this.dataGridViewSpaces.DataSource = this.bindingSourceSpacesDataGrid;
             this.dataGridViewSpaces.EnableHeadersVisualStyles = false;
             this.dataGridViewSpaces.Location = new System.Drawing.Point(16, 5);
             this.dataGridViewSpaces.Name = "dataGridViewSpaces";
             this.dataGridViewSpaces.RowHeadersVisible = false;
             this.dataGridViewSpaces.Size = new System.Drawing.Size(843, 247);
             this.dataGridViewSpaces.TabIndex = 5;
-            // 
-            // ColumnSpaceId
-            // 
-            this.ColumnSpaceId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpaceId.FillWeight = 150F;
-            this.ColumnSpaceId.HeaderText = "id";
-            this.ColumnSpaceId.Name = "ColumnSpaceId";
-            // 
-            // ColumnSpaceName
-            // 
-            this.ColumnSpaceName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpaceName.FillWeight = 150F;
-            this.ColumnSpaceName.HeaderText = "name";
-            this.ColumnSpaceName.Name = "ColumnSpaceName";
-            // 
-            // ColumnSpaceLocation
-            // 
-            this.ColumnSpaceLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpaceLocation.FillWeight = 150F;
-            this.ColumnSpaceLocation.HeaderText = "location";
-            this.ColumnSpaceLocation.Name = "ColumnSpaceLocation";
-            // 
-            // ColumnSpaceMeasures
-            // 
-            this.ColumnSpaceMeasures.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpaceMeasures.FillWeight = 150F;
-            this.ColumnSpaceMeasures.HeaderText = "measures (m²)";
-            this.ColumnSpaceMeasures.Name = "ColumnSpaceMeasures";
-            // 
-            // ColumnSpaceFixedChairs
-            // 
-            this.ColumnSpaceFixedChairs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnSpaceFixedChairs.FillWeight = 150F;
-            this.ColumnSpaceFixedChairs.HeaderText = "fixed_chairs";
-            this.ColumnSpaceFixedChairs.Name = "ColumnSpaceFixedChairs";
             // 
             // pictureBoxLogo
             // 
@@ -239,6 +210,7 @@
             // 
             // pictureBoxMenuIcon
             // 
+            this.pictureBoxMenuIcon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxMenuIcon.Image = global::evencat.Resource1.menuIconWhite;
             this.pictureBoxMenuIcon.Location = new System.Drawing.Point(12, 15);
             this.pictureBoxMenuIcon.Name = "pictureBoxMenuIcon";
@@ -246,6 +218,61 @@
             this.pictureBoxMenuIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMenuIcon.TabIndex = 1;
             this.pictureBoxMenuIcon.TabStop = false;
+            this.pictureBoxMenuIcon.Click += new System.EventHandler(this.pictureBoxMenuIcon_Click);
+            // 
+            // buttonCheckAllActivities
+            // 
+            this.buttonCheckAllActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCheckAllActivities.Location = new System.Drawing.Point(49, 491);
+            this.buttonCheckAllActivities.Name = "buttonCheckAllActivities";
+            this.buttonCheckAllActivities.Size = new System.Drawing.Size(234, 26);
+            this.buttonCheckAllActivities.TabIndex = 11;
+            this.buttonCheckAllActivities.Text = "Check all activities";
+            this.buttonCheckAllActivities.UseVisualStyleBackColor = true;
+            // 
+            // espaiidDataGridViewTextBoxColumn
+            // 
+            this.espaiidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.espaiidDataGridViewTextBoxColumn.DataPropertyName = "espai_id";
+            this.espaiidDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.espaiidDataGridViewTextBoxColumn.HeaderText = "espai_id";
+            this.espaiidDataGridViewTextBoxColumn.Name = "espaiidDataGridViewTextBoxColumn";
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            // 
+            // ubicacioDataGridViewTextBoxColumn
+            // 
+            this.ubicacioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ubicacioDataGridViewTextBoxColumn.DataPropertyName = "ubicacio";
+            this.ubicacioDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.ubicacioDataGridViewTextBoxColumn.HeaderText = "ubicacio";
+            this.ubicacioDataGridViewTextBoxColumn.Name = "ubicacioDataGridViewTextBoxColumn";
+            // 
+            // metresquadratsDataGridViewTextBoxColumn
+            // 
+            this.metresquadratsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.metresquadratsDataGridViewTextBoxColumn.DataPropertyName = "metres_quadrats";
+            this.metresquadratsDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.metresquadratsDataGridViewTextBoxColumn.HeaderText = "metres_quadrats";
+            this.metresquadratsDataGridViewTextBoxColumn.Name = "metresquadratsDataGridViewTextBoxColumn";
+            // 
+            // cadiresfixesDataGridViewTextBoxColumn
+            // 
+            this.cadiresfixesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cadiresfixesDataGridViewTextBoxColumn.DataPropertyName = "cadires_fixes";
+            this.cadiresfixesDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.cadiresfixesDataGridViewTextBoxColumn.HeaderText = "cadires_fixes";
+            this.cadiresfixesDataGridViewTextBoxColumn.Name = "cadiresfixesDataGridViewTextBoxColumn";
+            // 
+            // bindingSourceSpacesDataGrid
+            // 
+            this.bindingSourceSpacesDataGrid.DataSource = typeof(evencat.Models.Espais);
             // 
             // FormSpacesManagement
             // 
@@ -253,6 +280,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(967, 531);
+            this.Controls.Add(this.buttonCheckAllActivities);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.panelDataGridView);
             this.Controls.Add(this.buttonCreateActivity);
@@ -272,6 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpaces)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpacesDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,12 +319,14 @@
         private System.Windows.Forms.Button buttonCreateActivity;
         private System.Windows.Forms.Panel panelDataGridView;
         private System.Windows.Forms.DataGridView dataGridViewSpaces;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpaceId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpaceName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpaceLocation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpaceMeasures;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSpaceFixedChairs;
         private System.Windows.Forms.PictureBox pictureBoxMenuIcon;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private System.Windows.Forms.BindingSource bindingSourceSpacesDataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn espaiidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ubicacioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn metresquadratsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cadiresfixesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button buttonCheckAllActivities;
     }
 }

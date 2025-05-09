@@ -76,6 +76,8 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(322, 31);
             this.textBoxPassword.TabIndex = 4;
+            this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
+            this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
             // 
             // textBoxEmail
             // 
@@ -112,14 +114,14 @@
             this.labelEvencat.TabIndex = 0;
             this.labelEvencat.Text = "EVENCAT";
             // 
-            // FormStart
+            // FormLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(138)))), ((int)(((byte)(191)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelLogin);
-            this.Name = "FormStart";
+            this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FormStart_Load);
             this.panelLogin.ResumeLayout(false);

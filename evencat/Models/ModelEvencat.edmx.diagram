@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23848ac0527b42c8b1db80e8623f808b" Name="Diagram1">
+        <EntityTypeShape EntityType="evencatModel.Butaques" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="evencatModel.Esdeveniments" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="evencatModel.Espais" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="evencatModel.Reserves" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="evencatModel.Usuaris" Width="1.5" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="evencatModel.FK__Butaques__espai___4316F928" />
+        <AssociationConnector Association="evencatModel.FK__Reserves__butaca__45F365D3" />
+        <AssociationConnector Association="evencatModel.FK__Esdevenim__espai__440B1D61" />
+        <AssociationConnector Association="evencatModel.FK__Esdevenim__organ__44FF419A" />
+        <AssociationConnector Association="evencatModel.FK__Reserves__event___46E78A0C" />
+        <AssociationConnector Association="evencatModel.FK__Reserves__usuari__47DBAE45" />
+        <AssociationConnector Association="evencatModel.FK__Usuaris__created__48CFD27E" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
