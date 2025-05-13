@@ -30,15 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.usuariidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordhashDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataregistreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceUsersDataGrid = new System.Windows.Forms.BindingSource(this.components);
             this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
             this.buttonCreateUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -50,14 +47,23 @@
             this.labelUsersManagement = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxMenu = new System.Windows.Forms.PictureBox();
-            this.buttonCheckUserReservations = new System.Windows.Forms.Button();
             this.buttonAllReservations = new System.Windows.Forms.Button();
+            this.buttonSaveEdit = new System.Windows.Forms.Button();
+            this.buttonCancelEdit = new System.Windows.Forms.Button();
+            this.descripcioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuariidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataregistreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceUsersDataGrid = new System.Windows.Forms.BindingSource(this.components);
             this.panelDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsersDataGrid)).BeginInit();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDataGridView
@@ -73,89 +79,58 @@
             // 
             this.dataGridViewUsers.AllowUserToAddRows = false;
             this.dataGridViewUsers.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewUsers.AutoGenerateColumns = false;
             this.dataGridViewUsers.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewUsers.ColumnHeadersHeight = 35;
             this.dataGridViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.usuariidDataGridViewTextBoxColumn,
+            this.nomDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
-            this.passwordhashDataGridViewTextBoxColumn,
             this.rolDataGridViewTextBoxColumn,
+            this.descripcioDataGridViewTextBoxColumn,
             this.dataregistreDataGridViewTextBoxColumn,
             this.createdbyDataGridViewTextBoxColumn});
             this.dataGridViewUsers.DataSource = this.bindingSourceUsersDataGrid;
             this.dataGridViewUsers.EnableHeadersVisualStyles = false;
             this.dataGridViewUsers.Location = new System.Drawing.Point(7, 5);
+            this.dataGridViewUsers.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.RowHeadersVisible = false;
+            this.dataGridViewUsers.RowHeadersWidth = 45;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewUsers.Size = new System.Drawing.Size(852, 259);
             this.dataGridViewUsers.TabIndex = 5;
-            // 
-            // usuariidDataGridViewTextBoxColumn
-            // 
-            this.usuariidDataGridViewTextBoxColumn.DataPropertyName = "usuari_id";
-            this.usuariidDataGridViewTextBoxColumn.HeaderText = "usuari_id";
-            this.usuariidDataGridViewTextBoxColumn.Name = "usuariidDataGridViewTextBoxColumn";
-            this.usuariidDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // passwordhashDataGridViewTextBoxColumn
-            // 
-            this.passwordhashDataGridViewTextBoxColumn.DataPropertyName = "password_hash";
-            this.passwordhashDataGridViewTextBoxColumn.HeaderText = "password_hash";
-            this.passwordhashDataGridViewTextBoxColumn.Name = "passwordhashDataGridViewTextBoxColumn";
-            this.passwordhashDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // rolDataGridViewTextBoxColumn
-            // 
-            this.rolDataGridViewTextBoxColumn.DataPropertyName = "rol";
-            this.rolDataGridViewTextBoxColumn.HeaderText = "rol";
-            this.rolDataGridViewTextBoxColumn.Name = "rolDataGridViewTextBoxColumn";
-            this.rolDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // dataregistreDataGridViewTextBoxColumn
-            // 
-            this.dataregistreDataGridViewTextBoxColumn.DataPropertyName = "data_registre";
-            this.dataregistreDataGridViewTextBoxColumn.HeaderText = "data_registre";
-            this.dataregistreDataGridViewTextBoxColumn.Name = "dataregistreDataGridViewTextBoxColumn";
-            this.dataregistreDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // createdbyDataGridViewTextBoxColumn
-            // 
-            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
-            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
-            this.createdbyDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // bindingSourceUsersDataGrid
-            // 
-            this.bindingSourceUsersDataGrid.DataSource = typeof(evencat.Models.Usuaris);
             // 
             // comboBoxOrderBy
             // 
             this.comboBoxOrderBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxOrderBy.FormattingEnabled = true;
+            this.comboBoxOrderBy.Items.AddRange(new object[] {
+            "All",
+            "ID",
+            "Name",
+            "Role",
+            "Email"});
             this.comboBoxOrderBy.Location = new System.Drawing.Point(56, 168);
             this.comboBoxOrderBy.Name = "comboBoxOrderBy";
             this.comboBoxOrderBy.Size = new System.Drawing.Size(140, 26);
             this.comboBoxOrderBy.TabIndex = 17;
+            this.comboBoxOrderBy.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrderBy_SelectedIndexChanged);
             // 
             // buttonCreateUser
             // 
@@ -177,11 +152,12 @@
             this.buttonEdit.TabIndex = 19;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonDelete
             // 
             this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonDelete.Location = new System.Drawing.Point(811, 164);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(97, 30);
@@ -204,6 +180,11 @@
             // 
             this.comboBoxUserType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxUserType.FormattingEnabled = true;
+            this.comboBoxUserType.Items.AddRange(new object[] {
+            "All",
+            "Superadmin",
+            "Organizer",
+            "NormalUser"});
             this.comboBoxUserType.Location = new System.Drawing.Point(597, 7);
             this.comboBoxUserType.Name = "comboBoxUserType";
             this.comboBoxUserType.Size = new System.Drawing.Size(140, 26);
@@ -218,6 +199,7 @@
             this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxUserName
             // 
@@ -260,36 +242,112 @@
             this.pictureBoxMenu.TabStop = false;
             this.pictureBoxMenu.Click += new System.EventHandler(this.pictureBoxMenu_Click);
             // 
-            // buttonCheckUserReservations
-            // 
-            this.buttonCheckUserReservations.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCheckUserReservations.Location = new System.Drawing.Point(690, 494);
-            this.buttonCheckUserReservations.Name = "buttonCheckUserReservations";
-            this.buttonCheckUserReservations.Size = new System.Drawing.Size(228, 26);
-            this.buttonCheckUserReservations.TabIndex = 16;
-            this.buttonCheckUserReservations.Text = "Check   user   reservations";
-            this.buttonCheckUserReservations.UseVisualStyleBackColor = true;
-            // 
             // buttonAllReservations
             // 
             this.buttonAllReservations.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAllReservations.Location = new System.Drawing.Point(49, 494);
+            this.buttonAllReservations.Location = new System.Drawing.Point(690, 494);
             this.buttonAllReservations.Name = "buttonAllReservations";
             this.buttonAllReservations.Size = new System.Drawing.Size(228, 26);
             this.buttonAllReservations.TabIndex = 21;
-            this.buttonAllReservations.Text = "All   reservations";
+            this.buttonAllReservations.Text = "Check   all   reservations";
             this.buttonAllReservations.UseVisualStyleBackColor = true;
             this.buttonAllReservations.Click += new System.EventHandler(this.buttonAllReservations_Click);
+            // 
+            // buttonSaveEdit
+            // 
+            this.buttonSaveEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveEdit.Location = new System.Drawing.Point(49, 492);
+            this.buttonSaveEdit.Name = "buttonSaveEdit";
+            this.buttonSaveEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonSaveEdit.TabIndex = 22;
+            this.buttonSaveEdit.Text = "Save";
+            this.buttonSaveEdit.UseVisualStyleBackColor = true;
+            this.buttonSaveEdit.Visible = false;
+            // 
+            // buttonCancelEdit
+            // 
+            this.buttonCancelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelEdit.Location = new System.Drawing.Point(152, 492);
+            this.buttonCancelEdit.Name = "buttonCancelEdit";
+            this.buttonCancelEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonCancelEdit.TabIndex = 23;
+            this.buttonCancelEdit.Text = "Cancel";
+            this.buttonCancelEdit.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Visible = false;
+            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
+            // 
+            // descripcioDataGridViewTextBoxColumn
+            // 
+            this.descripcioDataGridViewTextBoxColumn.DataPropertyName = "descripcio";
+            this.descripcioDataGridViewTextBoxColumn.HeaderText = "descripcio";
+            this.descripcioDataGridViewTextBoxColumn.Name = "descripcioDataGridViewTextBoxColumn";
+            this.descripcioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcioDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.nomDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // usuariidDataGridViewTextBoxColumn
+            // 
+            this.usuariidDataGridViewTextBoxColumn.DataPropertyName = "usuari_id";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.usuariidDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.usuariidDataGridViewTextBoxColumn.HeaderText = "usuari_id";
+            this.usuariidDataGridViewTextBoxColumn.Name = "usuariidDataGridViewTextBoxColumn";
+            this.usuariidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usuariidDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // rolDataGridViewTextBoxColumn
+            // 
+            this.rolDataGridViewTextBoxColumn.DataPropertyName = "rol";
+            this.rolDataGridViewTextBoxColumn.HeaderText = "rol";
+            this.rolDataGridViewTextBoxColumn.Name = "rolDataGridViewTextBoxColumn";
+            this.rolDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataregistreDataGridViewTextBoxColumn
+            // 
+            this.dataregistreDataGridViewTextBoxColumn.DataPropertyName = "data_registre";
+            this.dataregistreDataGridViewTextBoxColumn.HeaderText = "data_registre";
+            this.dataregistreDataGridViewTextBoxColumn.Name = "dataregistreDataGridViewTextBoxColumn";
+            this.dataregistreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataregistreDataGridViewTextBoxColumn.Width = 142;
+            // 
+            // createdbyDataGridViewTextBoxColumn
+            // 
+            this.createdbyDataGridViewTextBoxColumn.DataPropertyName = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.HeaderText = "created_by";
+            this.createdbyDataGridViewTextBoxColumn.Name = "createdbyDataGridViewTextBoxColumn";
+            this.createdbyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceUsersDataGrid
+            // 
+            this.bindingSourceUsersDataGrid.DataSource = typeof(evencat.Models.Usuaris);
             // 
             // FormUsersManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 531);
+            this.Controls.Add(this.buttonCancelEdit);
+            this.Controls.Add(this.buttonSaveEdit);
             this.Controls.Add(this.buttonAllReservations);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelDataGridView);
-            this.Controls.Add(this.buttonCheckUserReservations);
             this.Controls.Add(this.comboBoxOrderBy);
             this.Controls.Add(this.buttonCreateUser);
             this.Controls.Add(this.buttonEdit);
@@ -303,11 +361,11 @@
             this.Load += new System.EventHandler(this.FormUsersManagement_Load);
             this.panelDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsersDataGrid)).EndInit();
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsersDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,14 +386,16 @@
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelUsersManagement;
         private System.Windows.Forms.PictureBox pictureBoxMenu;
-        private System.Windows.Forms.Button buttonCheckUserReservations;
         private System.Windows.Forms.BindingSource bindingSourceUsersDataGrid;
+        private System.Windows.Forms.Button buttonAllReservations;
+        private System.Windows.Forms.Button buttonSaveEdit;
+        private System.Windows.Forms.Button buttonCancelEdit;
         private System.Windows.Forms.DataGridViewTextBoxColumn usuariidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordhashDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rolDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataregistreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdbyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button buttonAllReservations;
     }
 }

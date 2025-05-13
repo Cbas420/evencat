@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -40,8 +46,21 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -55,63 +74,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppColors.cs" />
-    <Compile Include="FontManager.cs" />
-    <Compile Include="FormCreateUser.cs">
+    <Compile Include="Helpers\AppColors.cs" />
+    <Compile Include="Helpers\Encryption.cs" />
+    <Compile Include="Helpers\FontManager.cs" />
+    <Compile Include="Forms\FormCreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateUser.Designer.cs">
+    <Compile Include="Forms\FormCreateUser.Designer.cs">
       <DependentUpon>FormCreateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEventsManagement.cs">
+    <Compile Include="Forms\FormEventsManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEventsManagement.Designer.cs">
+    <Compile Include="Forms\FormEventsManagement.Designer.cs">
       <DependentUpon>FormEventsManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReservationsManagement.cs">
+    <Compile Include="Forms\FormReservationsManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReservationsManagement.Designer.cs">
+    <Compile Include="Forms\FormReservationsManagement.Designer.cs">
       <DependentUpon>FormReservationsManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStart.cs">
+    <Compile Include="Forms\FormStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormStart.Designer.cs">
+    <Compile Include="Forms\FormStart.Designer.cs">
       <DependentUpon>FormStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSelectOption.cs">
+    <Compile Include="Forms\FormSelectOption.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSelectOption.Designer.cs">
+    <Compile Include="Forms\FormSelectOption.Designer.cs">
       <DependentUpon>FormSelectOption.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSpacesManagement.cs">
+    <Compile Include="Forms\FormSpacesManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSpacesManagement.Designer.cs">
+    <Compile Include="Forms\FormSpacesManagement.Designer.cs">
       <DependentUpon>FormSpacesManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogIn.cs">
+    <Compile Include="Forms\FormLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogIn.Designer.cs">
+    <Compile Include="Forms\FormLogIn.Designer.cs">
       <DependentUpon>FormLogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTransparency.cs">
+    <Compile Include="Forms\FormTransparency.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTransparency.Designer.cs">
+    <Compile Include="Forms\FormTransparency.Designer.cs">
       <DependentUpon>FormTransparency.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUsersManagement.cs">
+    <Compile Include="Forms\FormUsersManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUsersManagement.Designer.cs">
+    <Compile Include="Forms\FormUsersManagement.Designer.cs">
       <DependentUpon>FormUsersManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeRoundedMethods.cs" />
+    <Compile Include="Helpers\MakeRoundedMethods.cs" />
+    <Compile Include="Models\Amics.cs">
+      <DependentUpon>ModelEvencat.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Butaques.cs">
       <DependentUpon>ModelEvencat.tt</DependentUpon>
     </Compile>
@@ -141,6 +164,7 @@
     <Compile Include="Models\Reserves.cs">
       <DependentUpon>ModelEvencat.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReservesOrm.cs" />
     <Compile Include="Models\Usuaris.cs">
       <DependentUpon>ModelEvencat.tt</DependentUpon>
     </Compile>
@@ -155,7 +179,7 @@
     <Compile Include="TransparentPanels.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserSession.cs" />
+    <Compile Include="Helpers\UserSession.cs" />
     <Content Include="Models\ModelEvencat.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelEvencat.Context.cs</LastGenOutput>
@@ -166,31 +190,31 @@
       <DependentUpon>ModelEvencat.edmx</DependentUpon>
       <LastGenOutput>ModelEvencat.cs</LastGenOutput>
     </Content>
-    <EmbeddedResource Include="FormCreateUser.resx">
+    <EmbeddedResource Include="Forms\FormCreateUser.resx">
       <DependentUpon>FormCreateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEventsManagement.resx">
+    <EmbeddedResource Include="Forms\FormEventsManagement.resx">
       <DependentUpon>FormEventsManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReservationsManagement.resx">
+    <EmbeddedResource Include="Forms\FormReservationsManagement.resx">
       <DependentUpon>FormReservationsManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStart.resx">
+    <EmbeddedResource Include="Forms\FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSelectOption.resx">
+    <EmbeddedResource Include="Forms\FormSelectOption.resx">
       <DependentUpon>FormSelectOption.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSpacesManagement.resx">
+    <EmbeddedResource Include="Forms\FormSpacesManagement.resx">
       <DependentUpon>FormSpacesManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogIn.resx">
+    <EmbeddedResource Include="Forms\FormLogIn.resx">
       <DependentUpon>FormLogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTransparency.resx">
+    <EmbeddedResource Include="Forms\FormTransparency.resx">
       <DependentUpon>FormTransparency.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUsersManagement.resx">
+    <EmbeddedResource Include="Forms\FormUsersManagement.resx">
       <DependentUpon>FormUsersManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

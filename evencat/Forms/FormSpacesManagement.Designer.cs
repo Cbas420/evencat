@@ -39,12 +39,14 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonCreateSpace = new System.Windows.Forms.Button();
             this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
-            this.buttonCreateActivity = new System.Windows.Forms.Button();
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dataGridViewSpaces = new System.Windows.Forms.DataGridView();
+            this.buttonCheckAllEvents = new System.Windows.Forms.Button();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
-            this.buttonCheckAllActivities = new System.Windows.Forms.Button();
+            this.buttonCancelEdit = new System.Windows.Forms.Button();
+            this.buttonSaveEdit = new System.Windows.Forms.Button();
+            this.buttonChangeStatus = new System.Windows.Forms.Button();
             this.espaiidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ubicacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,6 +130,7 @@
             this.buttonEdit.TabIndex = 9;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonCreateSpace
             // 
@@ -147,17 +150,6 @@
             this.comboBoxOrderBy.Name = "comboBoxOrderBy";
             this.comboBoxOrderBy.Size = new System.Drawing.Size(140, 26);
             this.comboBoxOrderBy.TabIndex = 8;
-            // 
-            // buttonCreateActivity
-            // 
-            this.buttonCreateActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreateActivity.Location = new System.Drawing.Point(747, 491);
-            this.buttonCreateActivity.Name = "buttonCreateActivity";
-            this.buttonCreateActivity.Size = new System.Drawing.Size(161, 26);
-            this.buttonCreateActivity.TabIndex = 8;
-            this.buttonCreateActivity.Text = "Create activity";
-            this.buttonCreateActivity.UseVisualStyleBackColor = true;
-            this.buttonCreateActivity.Click += new System.EventHandler(this.buttonCreateActivity_Click);
             // 
             // panelDataGridView
             // 
@@ -198,6 +190,17 @@
             this.dataGridViewSpaces.Size = new System.Drawing.Size(843, 247);
             this.dataGridViewSpaces.TabIndex = 5;
             // 
+            // buttonCheckAllEvents
+            // 
+            this.buttonCheckAllEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCheckAllEvents.Location = new System.Drawing.Point(684, 491);
+            this.buttonCheckAllEvents.Name = "buttonCheckAllEvents";
+            this.buttonCheckAllEvents.Size = new System.Drawing.Size(234, 26);
+            this.buttonCheckAllEvents.TabIndex = 11;
+            this.buttonCheckAllEvents.Text = "Check all events";
+            this.buttonCheckAllEvents.UseVisualStyleBackColor = true;
+            this.buttonCheckAllEvents.Click += new System.EventHandler(this.buttonCheckAllEvents_Click);
+            // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Image = global::evencat.Resource1.evencatLogoWhite;
@@ -220,15 +223,39 @@
             this.pictureBoxMenuIcon.TabStop = false;
             this.pictureBoxMenuIcon.Click += new System.EventHandler(this.pictureBoxMenuIcon_Click);
             // 
-            // buttonCheckAllActivities
+            // buttonCancelEdit
             // 
-            this.buttonCheckAllActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCheckAllActivities.Location = new System.Drawing.Point(49, 491);
-            this.buttonCheckAllActivities.Name = "buttonCheckAllActivities";
-            this.buttonCheckAllActivities.Size = new System.Drawing.Size(234, 26);
-            this.buttonCheckAllActivities.TabIndex = 11;
-            this.buttonCheckAllActivities.Text = "Check all activities";
-            this.buttonCheckAllActivities.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelEdit.Location = new System.Drawing.Point(152, 491);
+            this.buttonCancelEdit.Name = "buttonCancelEdit";
+            this.buttonCancelEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonCancelEdit.TabIndex = 25;
+            this.buttonCancelEdit.Text = "Cancel";
+            this.buttonCancelEdit.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Visible = false;
+            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
+            // 
+            // buttonSaveEdit
+            // 
+            this.buttonSaveEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveEdit.Location = new System.Drawing.Point(49, 491);
+            this.buttonSaveEdit.Name = "buttonSaveEdit";
+            this.buttonSaveEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonSaveEdit.TabIndex = 24;
+            this.buttonSaveEdit.Text = "Save";
+            this.buttonSaveEdit.UseVisualStyleBackColor = true;
+            this.buttonSaveEdit.Visible = false;
+            // 
+            // buttonChangeStatus
+            // 
+            this.buttonChangeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChangeStatus.Location = new System.Drawing.Point(255, 491);
+            this.buttonChangeStatus.Name = "buttonChangeStatus";
+            this.buttonChangeStatus.Size = new System.Drawing.Size(143, 30);
+            this.buttonChangeStatus.TabIndex = 18;
+            this.buttonChangeStatus.Text = "Change status";
+            this.buttonChangeStatus.UseVisualStyleBackColor = true;
+            this.buttonChangeStatus.Visible = false;
             // 
             // espaiidDataGridViewTextBoxColumn
             // 
@@ -280,10 +307,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(967, 531);
-            this.Controls.Add(this.buttonCheckAllActivities);
+            this.Controls.Add(this.buttonChangeStatus);
+            this.Controls.Add(this.buttonCancelEdit);
+            this.Controls.Add(this.buttonSaveEdit);
+            this.Controls.Add(this.buttonCheckAllEvents);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.panelDataGridView);
-            this.Controls.Add(this.buttonCreateActivity);
             this.Controls.Add(this.comboBoxOrderBy);
             this.Controls.Add(this.buttonCreateSpace);
             this.Controls.Add(this.buttonEdit);
@@ -316,7 +345,6 @@
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonCreateSpace;
         private System.Windows.Forms.ComboBox comboBoxOrderBy;
-        private System.Windows.Forms.Button buttonCreateActivity;
         private System.Windows.Forms.Panel panelDataGridView;
         private System.Windows.Forms.DataGridView dataGridViewSpaces;
         private System.Windows.Forms.PictureBox pictureBoxMenuIcon;
@@ -327,6 +355,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ubicacioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn metresquadratsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cadiresfixesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button buttonCheckAllActivities;
+        private System.Windows.Forms.Button buttonCheckAllEvents;
+        private System.Windows.Forms.Button buttonCancelEdit;
+        private System.Windows.Forms.Button buttonSaveEdit;
+        private System.Windows.Forms.Button buttonChangeStatus;
     }
 }

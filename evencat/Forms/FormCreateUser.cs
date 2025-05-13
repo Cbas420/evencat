@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using evencat.Helpers;
 using evencat.Models;
+
 
 namespace evencat
 {
@@ -23,6 +25,19 @@ namespace evencat
         public FormCreateUser()
         {
             InitializeComponent();
+
+            //Encriptar antes de enviar
+
+            //Actualizar base de datos con campo de nombre
+
+            //Encriptar en BlowFish
+
+            //NECESITO: Campo de nombre y campo de estado (Activo o Deshabilitado)
+
+            //Usar la id del usuario de la sesión actual para el campo "created by"
+
+            //Usar la fecha actual
+
         }
 
         private void FormCreateUser_Load(object sender, EventArgs e)
@@ -40,8 +55,6 @@ namespace evencat
 
             textBoxName.Left = (Width - textBoxName.Width) / 2;
 
-            textBoxLastName.Left = (Width - textBoxLastName.Width) / 2;
-
             textBoxEmail.Left = (Width - textBoxEmail.Width) / 2;
 
             textBoxPassword.Left = (Width - textBoxPassword.Width) / 2;
@@ -57,7 +70,6 @@ namespace evencat
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxUserType, 13, "Current state");
             MakeRoundedMethods.makeRoundedTextBox(textBoxEmail, 35, "Email");
             MakeRoundedMethods.makeRoundedTextBox(textBoxName, 35, "Name");
-            MakeRoundedMethods.makeRoundedTextBox(textBoxLastName, 35, "Last Name");
             MakeRoundedMethods.makeRoundedTextBox(textBoxPassword, 35, "Password");
             MakeRoundedMethods.makeRoundedTextBox(textBoxConfirmPassword, 35, "Confirm Password");
 
@@ -90,23 +102,16 @@ namespace evencat
 
             user.email = textBoxEmail.Text.Trim();
 
-            user.password_hash = textBoxPassword.Text; //Encriptar antes de enviar
+            user.password_hash = Encryption.encrypt(textBoxPassword.Text); //REVISAR SI ESTO FUNCIONA CON UN LOG O ALGO
 
-            //Actualizar base de datos con campo de nombre
-
-            //Encriptar en BlowFish
-
-            //NECESITO: Campo de nombre y campo de estado (Activo o Deshabilitado)
-
-            //Usar la id del usuario de la sesión actual para el campo "created by"
-
-            //Usar la fecha actual
+            string password = textBoxPassword.Text;
+            string encryptedPassword = Encryption.encrypt(password);
 
 
 
 
 
-            
+
 
         }
     }

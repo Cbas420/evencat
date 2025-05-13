@@ -73,11 +73,10 @@ namespace evencat
 
             MakeRoundedMethods.makeRoundedTextBox(textBoxSpaceName, 35, "Space name");
             MakeRoundedMethods.makeRoundeSmallButton(buttonSearch, 25, Color.White, AppColors.purpleButton);
-            MakeRoundedMethods.makeRoundeSmallButton(buttonCreateActivity, 15, Color.White, AppColors.purpleButton);
             MakeRoundedMethods.makeRoundeSmallButton(buttonCreateSpace, 15, Color.Black, AppColors.grayBackground);
             MakeRoundedMethods.makeRoundeSmallButton(buttonEdit, 15, Color.Black, AppColors.grayBackground);
             MakeRoundedMethods.makeRoundeSmallButton(buttonDelete, 15, Color.White, Color.Red);
-            MakeRoundedMethods.makeRoundeSmallButton(buttonCheckAllActivities, 15, Color.White, AppColors.purpleButton);
+            MakeRoundedMethods.makeRoundeSmallButton(buttonCheckAllEvents, 15, Color.White, AppColors.purpleButton);
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxCurrentState, 10, "Current state");
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxOrderBy, 10, "Order by");
             MakeRoundedMethods.makeRoundedPanel(panelDataGridView, 35);
@@ -114,5 +113,52 @@ namespace evencat
             this.Close();
         }
 
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
+            dataGridViewSpaces.ReadOnly = false;
+
+            // Bloquear las columnas específicas usando sus nombres reales
+            dataGridViewSpaces.Columns["espaiidDataGridViewTextBoxColumn"].ReadOnly = true;
+            dataGridViewSpaces.Columns["cadiresfixesDataGridViewTextBoxColumn"].ReadOnly = true; //ESTE SE CAMBIA CON CHANGE STATUS
+
+            // Mostrar los botones Save y Cancel
+            buttonSaveEdit.Visible = true;
+            buttonCancelEdit.Visible = true;
+            buttonChangeStatus.Enabled = true;
+
+
+            buttonEdit.Enabled = false;
+            buttonCheckAllEvents.Enabled = false;
+            buttonDelete.Enabled = false;
+            buttonCreateSpace.Enabled = false;
+
+        }
+
+        private void buttonCancelEdit_Click(object sender, EventArgs e)
+        {
+
+            //bindingSourceSpacesDataGrid.DataSource = UsuarisOrm.Select(); EL SELECT DEBE SER CON EL CORRESPONDIENTE
+
+            dataGridViewSpaces.ReadOnly = true;
+
+            // Ocultar Save y Cancel
+            buttonEdit.Enabled = true;
+            buttonCheckAllEvents.Enabled = true;
+            buttonDelete.Enabled = true;
+            buttonCreateSpace.Enabled = true;
+
+            buttonSaveEdit.Visible = false;
+            buttonCancelEdit.Visible = false;
+            buttonChangeStatus.Enabled = false;
+        }
+
+        private void buttonCheckAllEvents_Click(object sender, EventArgs e)
+        {
+            FormEventsManagement formEventsManagement = new FormEventsManagement();
+            this.Hide();
+            formEventsManagement.ShowDialog();
+            this.Show();
+        }
     }
 }

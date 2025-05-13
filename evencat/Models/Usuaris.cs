@@ -17,6 +17,8 @@ namespace evencat.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuaris()
         {
+            this.Amics = new HashSet<Amics>();
+            this.Amics1 = new HashSet<Amics>();
             this.Esdeveniments = new HashSet<Esdeveniments>();
             this.Reserves = new HashSet<Reserves>();
             this.Usuaris1 = new HashSet<Usuaris>();
@@ -28,7 +30,13 @@ namespace evencat.Models
         public string rol { get; set; }
         public Nullable<System.DateTime> data_registre { get; set; }
         public Nullable<int> created_by { get; set; }
+        public string nom { get; set; }
+        public string descripcio { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Amics> Amics { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Amics> Amics1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Esdeveniments> Esdeveniments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

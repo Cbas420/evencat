@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelDescription = new System.Windows.Forms.Label();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.comboBoxUserType = new System.Windows.Forms.ComboBox();
@@ -67,17 +66,6 @@
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelDescription.Click += new System.EventHandler(this.labelDescription_Click);
             // 
-            // textBoxLastName
-            // 
-            this.textBoxLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLastName.Location = new System.Drawing.Point(71, 149);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(322, 24);
-            this.textBoxLastName.TabIndex = 6;
-            this.textBoxLastName.Text = "Last name";
-            this.textBoxLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBoxName
             // 
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -93,7 +81,7 @@
             // 
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(71, 206);
+            this.textBoxEmail.Location = new System.Drawing.Point(71, 157);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(322, 24);
             this.textBoxEmail.TabIndex = 7;
@@ -108,7 +96,7 @@
             "Administrator",
             "Common",
             "Organizer"});
-            this.comboBoxUserType.Location = new System.Drawing.Point(71, 363);
+            this.comboBoxUserType.Location = new System.Drawing.Point(71, 314);
             this.comboBoxUserType.Name = "comboBoxUserType";
             this.comboBoxUserType.Size = new System.Drawing.Size(322, 28);
             this.comboBoxUserType.TabIndex = 10;
@@ -118,7 +106,7 @@
             // 
             this.textBoxConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(71, 314);
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(71, 265);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(322, 24);
             this.textBoxConfirmPassword.TabIndex = 12;
@@ -129,7 +117,7 @@
             // 
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(71, 257);
+            this.textBoxPassword.Location = new System.Drawing.Point(71, 208);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(322, 24);
             this.textBoxPassword.TabIndex = 11;
@@ -148,7 +136,7 @@
             // buttonCreateUser
             // 
             this.buttonCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreateUser.Location = new System.Drawing.Point(144, 411);
+            this.buttonCreateUser.Location = new System.Drawing.Point(144, 362);
             this.buttonCreateUser.Name = "buttonCreateUser";
             this.buttonCreateUser.Size = new System.Drawing.Size(138, 27);
             this.buttonCreateUser.TabIndex = 17;
@@ -160,13 +148,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 450);
+            this.ClientSize = new System.Drawing.Size(412, 406);
             this.Controls.Add(this.buttonCreateUser);
             this.Controls.Add(this.textBoxConfirmPassword);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.comboBoxUserType);
             this.Controls.Add(this.textBoxEmail);
-            this.Controls.Add(this.textBoxLastName);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.panelTitle);
             this.Name = "FormCreateUser";
@@ -186,7 +173,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelDescription;
-        private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.ComboBox comboBoxUserType;

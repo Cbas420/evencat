@@ -25,6 +25,7 @@ namespace evencat.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Amics> Amics { get; set; }
         public virtual DbSet<Butaques> Butaques { get; set; }
         public virtual DbSet<Esdeveniments> Esdeveniments { get; set; }
         public virtual DbSet<Espais> Espais { get; set; }

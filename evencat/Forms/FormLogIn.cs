@@ -11,8 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using evencat.Helpers;
 using evencat.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+
 
 namespace evencat
 {
@@ -149,9 +151,11 @@ namespace evencat
 
                 if (usuario != null)
                 {
-                    if (textBoxPassword.Text == usuario.password_hash)
-                    {
+                    // Encriptar lo que escribió el usuario
+                    string encryptedInputPassword = Encryption.encrypt(textBoxPassword.Text);
 
+                    if (usuario.password_hash == encryptedInputPassword)
+                    {
                         UserSession.UserId = usuario.usuari_id;
                         UserSession.Email = usuario.email;
                         UserSession.Role = usuario.rol;
@@ -207,49 +211,6 @@ namespace evencat
         }
 
 
-
-
-        /* VerifyCredentials CON ENCRIPTACION
-        private void VerifyCredentials()
-        {
-            try
-            {
-                using (var db = new evencatEntities()) // O puedes usar Orm.bd si prefieres
-                {
-                    var usuario = db.Usuaris
-                        .FirstOrDefault(u => u.email == textBoxEmail.Text.Trim() ); // Asumiendo que tienes campo 'actiu'
-
-                    if (usuario != null)
-                    {
-                        // Verificar contraseña con BCrypt (igual que en tu otro proyecto)
-                        if (BCrypt.Net.BCrypt.EnhancedVerify(textBoxPassword.Text, usuario.password_hash, HashType.SHA512))
-                        {
-                            UsuarioId = usuario.usuari_id;
-                            Email = usuario.email;
-                            Rol = usuario.rol;
-
-                            LoginSuccess = true;
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Contraseña incorrecta.", "Error",
-                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario no encontrado o inactivo.", "Error",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al verificar credenciales: {ex.Message}", "Error",
-                              MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
     }
 }
 
