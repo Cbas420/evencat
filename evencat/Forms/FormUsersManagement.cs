@@ -46,21 +46,13 @@ namespace evencat
         {
             loadDesigns();
 
-            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.Select();
+            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.select();
 
             dataGridViewUsers.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
         private void loadDesigns() {
-
-            //dataGridViewUsers.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Centrar el texto de las celdas
-            //dataGridViewUsers.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Centrar los encabezados de las columnas
-            //dataGridViewUsers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             textBoxUserName.SelectionLength = 0;
             BackColor = AppColors.purpleBackground;
@@ -71,7 +63,7 @@ namespace evencat
             labelUsersManagement.Font = new Font(FontManager.FontCollection.Families[0], titleFontSize);
 
 
-            float spaceNameSize = textBoxUserName.Font.Size;
+            float userNameSize = textBoxUserName.Font.Size;
 
 
             labelUsersManagement.Left = (Width - labelUsersManagement.Width) / 2;
@@ -79,13 +71,15 @@ namespace evencat
             panelSearch.BackColor = AppColors.grayBackground;
 
             MakeRoundedMethods.makeRoundedPanel(panelSearch, 35);
-            MakeRoundedMethods.makeRoundedTextBox(textBoxUserName, 35, "Space name");
+            MakeRoundedMethods.makeRoundedTextBox(textBoxUserName, 35, "User name");
             MakeRoundedMethods.makeRoundeSmallButton(buttonSearch, 25, Color.White, AppColors.purpleButton);
 
             MakeRoundedMethods.makeRoundeSmallButton(buttonAllReservations, 15, Color.White, AppColors.purpleButton);
 
             MakeRoundedMethods.makeRoundeSmallButton(buttonCreateUser, 15, Color.Black, AppColors.grayBackground);
             MakeRoundedMethods.makeRoundeSmallButton(buttonEdit, 15, Color.Black, AppColors.grayBackground);
+            MakeRoundedMethods.makeRoundeSmallButton(buttonSaveEdit, 15, Color.Black, AppColors.grayBackground);
+            MakeRoundedMethods.makeRoundeSmallButton(buttonCancelEdit, 15, Color.Black, AppColors.grayBackground);
 
             //MakeRoundedMethods.makeRoundeSmallButton(buttonDelete, 15, Color.White, Color.Red);
 
@@ -98,7 +92,7 @@ namespace evencat
             panelDataGridView.Left = (Width - panelDataGridView.Width) / 2;
 
 
-            textBoxUserName.Font = new Font(FontManager.FontCollection.Families[0], spaceNameSize);
+            textBoxUserName.Font = new Font(FontManager.FontCollection.Families[0], userNameSize);
 
         }
 
@@ -108,8 +102,8 @@ namespace evencat
 
             createUserForm.ShowDialog();
 
-
-
+            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.select();
+            dataGridViewUsers.Refresh();
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
@@ -129,7 +123,22 @@ namespace evencat
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            if (dataGridViewUsers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un usuario para editar.");
+                return;
+            }
+
             dataGridViewUsers.ReadOnly = false;
+
+            // Para solo poder editar la fila seleccionada 
+            foreach (DataGridViewRow row in dataGridViewUsers.Rows)
+            {
+                if (!row.Selected)
+                {
+                    row.ReadOnly = true;
+                }
+            }
 
             // Bloquear las columnas específicas usando sus nombres reales
             dataGridViewUsers.Columns["usuariidDataGridViewTextBoxColumn"].ReadOnly = true;
@@ -148,7 +157,7 @@ namespace evencat
 
         private void buttonCancelEdit_Click(object sender, EventArgs e)
         {
-            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.Select();
+            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.select();
 
             dataGridViewUsers.ReadOnly = true;
 
@@ -166,10 +175,34 @@ namespace evencat
         private void comboBoxOrderBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             string nombre = textBoxUserName.Text.Trim();
-            string rol = comboBoxUserType.SelectedItem?.ToString() ?? "All";
-            string orden = comboBoxOrderBy.SelectedItem?.ToString() ?? "ID";
 
-            var usuariosFiltrados = UsuarisOrm.searchSpecificUsers(nombre, rol, orden);
+
+            string selectedRole = "All";
+            if (comboBoxUserType.SelectedItem != null)
+            {
+                selectedRole = comboBoxUserType.SelectedItem.ToString();
+            }
+
+            if (selectedRole == "Superadmin")
+            {
+                selectedRole = "Superadministrador";
+            }
+            else if (selectedRole == "Organizer")
+            {
+                selectedRole = "Organitzador";
+            }
+            else if (selectedRole == "NormalUser")
+            {
+                selectedRole = "UsuariNormal";
+            }
+            else if (selectedRole == "All")
+            {
+                selectedRole = "Todos";
+            }
+
+            string orden = comboBoxOrderBy.SelectedItem?.ToString() ?? "ID"; //Revisa
+
+            var usuariosFiltrados = UsuarisOrm.searchSpecificUsers(nombre, selectedRole, orden);
 
             bindingSourceUsersDataGrid.DataSource = usuariosFiltrados;
         }
@@ -177,8 +210,6 @@ namespace evencat
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             string name = textBoxUserName.Text.Trim();
-
-            Console.WriteLine($"Valor de textBoxUserName.Text: '{name}'");
 
             // Obtener valor seleccionado del ComboBox de roles
             string selectedRole = "All";
@@ -219,6 +250,75 @@ namespace evencat
             // Mostrar los usuarios en el DataGrid
             bindingSourceUsersDataGrid.DataSource = filteredUsers;
 
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUsers.CurrentRow != null)
+            {
+                var selectedUser = dataGridViewUsers.CurrentRow.DataBoundItem as Usuaris;
+
+                if (selectedUser != null)
+                {
+                    var confirmResult = MessageBox.Show(
+                        $"¿Estás seguro de que deseas eliminar el usuario: {selectedUser.nom}?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        UsuarisOrm.delete(selectedUser);
+
+                        bindingSourceUsersDataGrid.Remove(selectedUser);
+                        dataGridViewUsers.Refresh();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor selecciona una reserva para eliminar.", "Sin selección");
+            }
+        }
+
+        private void buttonSaveEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewUsers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona una fila para guardar.");
+                return;
+            }
+
+            var row = dataGridViewUsers.SelectedRows[0];
+
+            Usuaris updatedUser = (Usuaris)row.DataBoundItem; //Repasar esto
+
+            //Array de strings con los roles que son ya tu sae
+            string[] rolesValidos = { "Superadministrador", "Organitzador", "UsuariNormal" };
+            if (!rolesValidos.Contains(updatedUser.rol))
+            {
+                MessageBox.Show("El rol debe ser 'Superadministrador', 'Organitzador' o 'UsuariNormal'.");
+                return;
+            }
+
+            // Actualizar en BD
+            UsuarisOrm.update(updatedUser);
+
+            MessageBox.Show("Cambios guardados.");
+
+            // Restaurar estado original
+            dataGridViewUsers.ReadOnly = true;
+            buttonSaveEdit.Visible = false;
+            buttonCancelEdit.Visible = false;
+
+            buttonEdit.Enabled = true;
+            buttonDelete.Enabled = true;
+            buttonCreateUser.Enabled = true;
+            buttonAllReservations.Enabled = true;
+
+            // Recargar datos
+            bindingSourceUsersDataGrid.DataSource = UsuarisOrm.select();
         }
     }
 }

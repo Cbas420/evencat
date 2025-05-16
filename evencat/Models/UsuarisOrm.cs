@@ -9,7 +9,7 @@ namespace evencat.Models
     public static class UsuarisOrm
     {
 
-        public static List<Usuaris> Select() 
+        public static List<Usuaris> select() 
         {  
             List<Usuaris> _usuaris = (
                 from u in Orm.bd.Usuaris
@@ -18,7 +18,7 @@ namespace evencat.Models
             return _usuaris;
         }
 
-        public static void Insert(Usuaris user) {
+        public static void insert(Usuaris user) {
 
             Orm.bd.Usuaris.Add(user);
 
@@ -31,7 +31,7 @@ namespace evencat.Models
             var query = Orm.bd.Usuaris.AsQueryable();
 
             //Filtrar por nombre si tiene un valor válido y no es el texto predeterminado
-            if (!string.IsNullOrWhiteSpace(name) && name != "Space name")
+            if (!string.IsNullOrWhiteSpace(name) && name != "User name")
             {
                 query = query.Where(u => u.nom.Contains(name));
             }
@@ -64,6 +64,28 @@ namespace evencat.Models
 
             //Finalmente, devolvemos la lista completa
             return query.ToList();
+        }
+
+        public static void delete(Usuaris user)
+        {
+            Orm.bd.Usuaris.Remove(user);
+            Orm.bd.SaveChanges();
+        }
+
+        public static void update(Usuaris updatedUser)
+        {
+            var existingUser = Orm.bd.Usuaris.Find(updatedUser.usuari_id);
+
+            if (existingUser != null)
+            {
+                existingUser.nom = updatedUser.nom;
+                existingUser.email = updatedUser.email;
+                existingUser.rol = updatedUser.rol;
+                existingUser.descripcio = updatedUser.descripcio;
+                existingUser.created_by = updatedUser.created_by;
+
+                Orm.bd.SaveChanges();
+            }
         }
 
 

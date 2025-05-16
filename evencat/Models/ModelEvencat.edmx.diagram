@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="23848ac0527b42c8b1db80e8623f808b" Name="Diagram1">
+      <Diagram DiagramId="23848ac0527b42c8b1db80e8623f808b" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="evencatModel.Amics" Width="1.5" PointX="3" PointY="9" />
         <EntityTypeShape EntityType="evencatModel.Butaques" Width="1.5" PointX="3" PointY="0.875" />
         <EntityTypeShape EntityType="evencatModel.Esdeveniments" Width="1.5" PointX="3" PointY="4.25" />

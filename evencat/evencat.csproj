@@ -74,6 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormCreateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreateEvent.Designer.cs">
+      <DependentUpon>FormCreateEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCreateSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreateSpace.Designer.cs">
+      <DependentUpon>FormCreateSpace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AppColors.cs" />
     <Compile Include="Helpers\Encryption.cs" />
     <Compile Include="Helpers\FontManager.cs" />
@@ -141,6 +153,7 @@
     <Compile Include="Models\Esdeveniments.cs">
       <DependentUpon>ModelEvencat.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EsdevenimentsOrm.cs" />
     <Compile Include="Models\Espais.cs">
       <DependentUpon>ModelEvencat.tt</DependentUpon>
     </Compile>
@@ -190,6 +203,12 @@
       <DependentUpon>ModelEvencat.edmx</DependentUpon>
       <LastGenOutput>ModelEvencat.cs</LastGenOutput>
     </Content>
+    <EmbeddedResource Include="Forms\FormCreateEvent.resx">
+      <DependentUpon>FormCreateEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreateSpace.resx">
+      <DependentUpon>FormCreateSpace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCreateUser.resx">
       <DependentUpon>FormCreateUser.cs</DependentUpon>
     </EmbeddedResource>

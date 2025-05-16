@@ -52,6 +52,8 @@ namespace evencat
                     continue;
                 }
 
+                //EL ORGANITZADOR --> MANEJAR LAS RESERVAS DE SU PROPIO EVENTO Y MANEJA SOLO LOS EVENTOS 
+
 
                /* // Paso 3: Manejar la opción seleccionada
                 switch (selectedOption)

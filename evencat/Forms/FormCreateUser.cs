@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using evencat.Helpers;
@@ -20,7 +21,7 @@ namespace evencat
         private BindingSource bindingSourceRoles = new BindingSource();
 
 
-        private PrivateFontCollection fontCollection;
+        //private PrivateFontCollection fontCollection;
 
         public FormCreateUser()
         {
@@ -49,9 +50,9 @@ namespace evencat
 
 
 
-        //tengo que encontrar la forma de automatizar esto
+            //tengo que encontrar la forma de automatizar esto
 
-        panelTitle.Left = (Width - panelTitle.Width) / 2;
+            panelTitle.Left = (Width - panelTitle.Width) / 2;
 
             textBoxName.Left = (Width - textBoxName.Width) / 2;
 
@@ -65,6 +66,9 @@ namespace evencat
 
             buttonCreateUser.Left = (Width - buttonCreateUser.Width) / 2;
 
+            textBoxDescription.Left = (Width - textBoxDescription.Width) / 2;
+
+
 
             MakeRoundedMethods.makeRoundeSmallButton(buttonCreateUser, 25, Color.White, AppColors.purpleButton);
             MakeRoundedMethods.MakeRoundedComboBox(comboBoxUserType, 13, "Current state");
@@ -73,7 +77,8 @@ namespace evencat
             MakeRoundedMethods.makeRoundedTextBox(textBoxPassword, 35, "Password");
             MakeRoundedMethods.makeRoundedTextBox(textBoxConfirmPassword, 35, "Confirm Password");
 
-            if (UserSession.Role.ToString() != "Superadministrador") {
+            if (UserSession.Role.ToString() != "Superadministrador")
+            {
                 var listaRoles = new List<string> {
                     "Administrator",
                     "Common"
@@ -96,23 +101,50 @@ namespace evencat
 
         private void buttonCreateUser_Click(object sender, EventArgs e)
         {
-            string rolSeleccionado = comboBoxUserType.SelectedItem?.ToString();
+            try
+            {
+                string selectedRole = comboBoxUserType.SelectedItem?.ToString();
+                string password = textBoxPassword.Text;
+                string confirmPassword = textBoxConfirmPassword.Text;
+                string email = textBoxEmail.Text.Trim();
 
-            Usuaris user = new Usuaris();
+                // Validación de rol
+                if (selectedRole != "Administrator" && selectedRole != "Common" && selectedRole != "Organizer")
+                    throw new Exception("Por favor, selecciona un tipo de usuario válido.");
 
-            user.email = textBoxEmail.Text.Trim();
+                // Validación de contraseñas
+                if (password != confirmPassword)
+                    throw new Exception("Las contraseñas no coinciden.");
 
-            user.password_hash = Encryption.encrypt(textBoxPassword.Text); //REVISAR SI ESTO FUNCIONA CON UN LOG O ALGO
+                // Validación simple de email con el CHECK de SQL Server
+                if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^.+@..+\..{2,}$"))
+                    throw new Exception("Por favor, introduce un email válido (ejemplo: usuario@dominio.com).");
 
-            string password = textBoxPassword.Text;
-            string encryptedPassword = Encryption.encrypt(password);
+                // Mapeo del rol al valor real
+                string role = selectedRole == "Administrator" ? "Superadministrador"
+                             : selectedRole == "Common" ? "UsuariNormal"
+                             : "Organitzador";
 
+                var user = new Usuaris
+                {
+                    nom = textBoxName.Text.Trim(),
+                    email = email,
+                    password_hash = Encryption.encrypt(password),
+                    rol = role,
+                    data_registre = DateTime.Now,
+                    created_by = UserSession.UserId,
+                    descripcio = textBoxDescription.Text.Trim()
+                };
 
-
-
-
-
-
+                UsuarisOrm.insert(user);
+                MessageBox.Show("Usuario creado correctamente.");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error al crear usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
+

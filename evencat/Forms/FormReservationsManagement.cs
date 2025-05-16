@@ -17,17 +17,70 @@ namespace evencat
         {
             InitializeComponent();
 
-            //BUSCAR POR NOMBRE DE USUARIO
-            //AÑADIR MOSTRAR EL NOMBRE DEL USUARIO
-
 
         }
 
         private void FormReservationsManagement_Load(object sender, EventArgs e)
         {
             BackColor = AppColors.purpleBackground;
-            bindingSourceReserves.DataSource = ReservesOrm.Select();
+            if (UserSession.Role == "Organitzador")
+            {
+                pictureBoxMenuIcon.Image = evencat.Resource1.menuIconWhite;
+
+                bindingSourceReserves.DataSource = ReservesOrm.selectForOrganitzador(UserSession.UserId);
+            }
+            else
+            {
+                bindingSourceReserves.DataSource = ReservesOrm.select();
+            }
+
+
+            loadDesigns();
+        }
+
+
+        private void loadDesigns()
+        {
+
             dataGridViewReservations.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            MakeRoundedMethods.makeRoundedPanel(panelSearch, 35);
+
+            BackColor = AppColors.purpleBackground;
+
+
+
+
+            float titleFontSize = labelReservationsManagement.Font.Size;
+
+
+
+
+
+
+
+            panelSearch.Left = (Width - panelSearch.Width) / 2;
+            panelSearch.BackColor = AppColors.grayBackground;
+
+            MakeRoundedMethods.makeRoundedPanel(panelSearch, 35);
+            MakeRoundedMethods.makeRoundedTextBox(textBoxSearchUser, 35, "Search user");
+            MakeRoundedMethods.makeRoundedTextBox(textBoxUserName, 35, "Name");
+            MakeRoundedMethods.makeRoundedTextBox(textBoxEventName, 35, "Event name");
+            MakeRoundedMethods.makeRoundedTextBox(textBoxUserEmail, 35, "Email");
+
+            MakeRoundedMethods.makeRoundedPanel(panelDataGridView, 35);
+
+            MakeRoundedMethods.makeRoundeSmallButton(buttonApplyFilter, 15, Color.White, AppColors.purpleButton);
+
+            MakeRoundedMethods.makeRoundeSmallButton(buttonSearch, 15, Color.White, AppColors.purpleButton);
+
+            MakeRoundedMethods.makeRoundeSmallButton(buttonDelete, 15, Color.White, Color.Red);
+
+
+
+
+            // textBoxEmail.Font = new Font(FontManager.FontCollection.Families[0], textBoxFontSize);
+
+
         }
 
         private void dataGridViewReservations_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -40,12 +93,12 @@ namespace evencat
                     int usuariId = Convert.ToInt32(row.Cells["usuariidDataGridViewTextBoxColumn"].Value);
                     int eventId = Convert.ToInt32(row.Cells["eventidDataGridViewTextBoxColumn"].Value);
 
-                    var usuario = Orm.bd.Usuaris.FirstOrDefault(u => u.usuari_id == usuariId);
-                    var evento = Orm.bd.Esdeveniments.FirstOrDefault(eve => eve.event_id == eventId);
+                    var usuario = Orm.bd.Usuaris.FirstOrDefault(u => u.usuari_id == usuariId); //REPASAR
+                    var evento = Orm.bd.Esdeveniments.FirstOrDefault(eve => eve.event_id == eventId); //REPASAR
 
                     if (usuario != null)
                     {
-                        //textBoxUserName.Text = usuario.nom ?? "Nombre no encontrado";
+                        textBoxUserName.Text = usuario.nom ?? "Nombre no encontrado";
                         textBoxUserEmail.Text = usuario.email ?? "Email no encontrado";
                     }
                     else
@@ -103,7 +156,7 @@ namespace evencat
 
                     if (confirmResult == DialogResult.Yes)
                     {
-                        ReservesOrm.Delete(selectedReservation);
+                        ReservesOrm.delete(selectedReservation);
 
                         bindingSourceReserves.Remove(selectedReservation);
                         dataGridViewReservations.Refresh();
@@ -119,6 +172,25 @@ namespace evencat
         private void pictureBoxMenuIcon_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+            string name = textBoxSearchUser.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                var filtered = ReservesOrm.searchByUserName(name);
+                bindingSourceReserves.DataSource = filtered;
+                dataGridViewReservations.Refresh();
+            }
+            else
+            {
+                // Si no hay texto, mostrar todas las reservas
+                bindingSourceReserves.DataSource = ReservesOrm.select();
+                dataGridViewReservations.Refresh();
+            }
         }
     }
 }

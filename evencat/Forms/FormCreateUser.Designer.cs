@@ -39,6 +39,7 @@
             this.panelTitle = new System.Windows.Forms.Panel();
             this.bindingSourceUserType = new System.Windows.Forms.BindingSource(this.components);
             this.buttonCreateUser = new System.Windows.Forms.Button();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUserType)).BeginInit();
@@ -81,7 +82,7 @@
             // 
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(71, 157);
+            this.textBoxEmail.Location = new System.Drawing.Point(71, 156);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(322, 24);
             this.textBoxEmail.TabIndex = 7;
@@ -96,7 +97,7 @@
             "Administrator",
             "Common",
             "Organizer"});
-            this.comboBoxUserType.Location = new System.Drawing.Point(71, 314);
+            this.comboBoxUserType.Location = new System.Drawing.Point(71, 356);
             this.comboBoxUserType.Name = "comboBoxUserType";
             this.comboBoxUserType.Size = new System.Drawing.Size(322, 28);
             this.comboBoxUserType.TabIndex = 10;
@@ -106,7 +107,7 @@
             // 
             this.textBoxConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxConfirmPassword.Location = new System.Drawing.Point(71, 265);
+            this.textBoxConfirmPassword.Location = new System.Drawing.Point(71, 256);
             this.textBoxConfirmPassword.Name = "textBoxConfirmPassword";
             this.textBoxConfirmPassword.Size = new System.Drawing.Size(322, 24);
             this.textBoxConfirmPassword.TabIndex = 12;
@@ -117,7 +118,7 @@
             // 
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(71, 208);
+            this.textBoxPassword.Location = new System.Drawing.Point(71, 206);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(322, 24);
             this.textBoxPassword.TabIndex = 11;
@@ -136,7 +137,7 @@
             // buttonCreateUser
             // 
             this.buttonCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreateUser.Location = new System.Drawing.Point(144, 362);
+            this.buttonCreateUser.Location = new System.Drawing.Point(144, 406);
             this.buttonCreateUser.Name = "buttonCreateUser";
             this.buttonCreateUser.Size = new System.Drawing.Size(138, 27);
             this.buttonCreateUser.TabIndex = 17;
@@ -144,11 +145,23 @@
             this.buttonCreateUser.UseVisualStyleBackColor = true;
             this.buttonCreateUser.Click += new System.EventHandler(this.buttonCreateUser_Click);
             // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDescription.Location = new System.Drawing.Point(71, 306);
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(322, 24);
+            this.textBoxDescription.TabIndex = 18;
+            this.textBoxDescription.Text = "Description";
+            this.textBoxDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FormCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 406);
+            this.ClientSize = new System.Drawing.Size(412, 453);
+            this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.buttonCreateUser);
             this.Controls.Add(this.textBoxConfirmPassword);
             this.Controls.Add(this.textBoxPassword);
@@ -181,5 +194,6 @@
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.BindingSource bindingSourceUserType;
         private System.Windows.Forms.Button buttonCreateUser;
+        private System.Windows.Forms.TextBox textBoxDescription;
     }
 }

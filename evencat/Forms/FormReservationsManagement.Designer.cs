@@ -36,6 +36,12 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.dataGridViewReservations = new System.Windows.Forms.DataGridView();
+            this.reservaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datareservaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuariidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butacaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceReserves = new System.Windows.Forms.BindingSource(this.components);
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.textBoxUserEmail = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
@@ -45,18 +51,12 @@
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
-            this.reservaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datareservaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuariidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butacaidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceReserves = new System.Windows.Forms.BindingSource(this.components);
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserves)).BeginInit();
             this.panelDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserves)).BeginInit();
             this.SuspendLayout();
             // 
             // labelReservationsManagement
@@ -79,6 +79,7 @@
             this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxSearchUser
             // 
@@ -143,6 +144,46 @@
             this.dataGridViewReservations.TabIndex = 5;
             this.dataGridViewReservations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReservations_CellClick);
             // 
+            // reservaidDataGridViewTextBoxColumn
+            // 
+            this.reservaidDataGridViewTextBoxColumn.DataPropertyName = "reserva_id";
+            this.reservaidDataGridViewTextBoxColumn.HeaderText = "reserva_id";
+            this.reservaidDataGridViewTextBoxColumn.Name = "reservaidDataGridViewTextBoxColumn";
+            this.reservaidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // datareservaDataGridViewTextBoxColumn
+            // 
+            this.datareservaDataGridViewTextBoxColumn.DataPropertyName = "data_reserva";
+            this.datareservaDataGridViewTextBoxColumn.HeaderText = "data_reserva";
+            this.datareservaDataGridViewTextBoxColumn.Name = "datareservaDataGridViewTextBoxColumn";
+            this.datareservaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datareservaDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // usuariidDataGridViewTextBoxColumn
+            // 
+            this.usuariidDataGridViewTextBoxColumn.DataPropertyName = "usuari_id";
+            this.usuariidDataGridViewTextBoxColumn.HeaderText = "usuari_id";
+            this.usuariidDataGridViewTextBoxColumn.Name = "usuariidDataGridViewTextBoxColumn";
+            this.usuariidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // eventidDataGridViewTextBoxColumn
+            // 
+            this.eventidDataGridViewTextBoxColumn.DataPropertyName = "event_id";
+            this.eventidDataGridViewTextBoxColumn.HeaderText = "event_id";
+            this.eventidDataGridViewTextBoxColumn.Name = "eventidDataGridViewTextBoxColumn";
+            this.eventidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // butacaidDataGridViewTextBoxColumn
+            // 
+            this.butacaidDataGridViewTextBoxColumn.DataPropertyName = "butaca_id";
+            this.butacaidDataGridViewTextBoxColumn.HeaderText = "butaca_id";
+            this.butacaidDataGridViewTextBoxColumn.Name = "butacaidDataGridViewTextBoxColumn";
+            this.butacaidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceReserves
+            // 
+            this.bindingSourceReserves.DataSource = typeof(evencat.Models.Reserves);
+            // 
             // panelDataGridView
             // 
             this.panelDataGridView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
@@ -178,7 +219,7 @@
             // 
             this.textBoxEventName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxEventName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEventName.Location = new System.Drawing.Point(620, 409);
+            this.textBoxEventName.Location = new System.Drawing.Point(620, 359);
             this.textBoxEventName.Name = "textBoxEventName";
             this.textBoxEventName.Size = new System.Drawing.Size(322, 24);
             this.textBoxEventName.TabIndex = 22;
@@ -232,46 +273,6 @@
             this.pictureBoxMenuIcon.TabStop = false;
             this.pictureBoxMenuIcon.Click += new System.EventHandler(this.pictureBoxMenuIcon_Click);
             // 
-            // reservaidDataGridViewTextBoxColumn
-            // 
-            this.reservaidDataGridViewTextBoxColumn.DataPropertyName = "reserva_id";
-            this.reservaidDataGridViewTextBoxColumn.HeaderText = "reserva_id";
-            this.reservaidDataGridViewTextBoxColumn.Name = "reservaidDataGridViewTextBoxColumn";
-            this.reservaidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // datareservaDataGridViewTextBoxColumn
-            // 
-            this.datareservaDataGridViewTextBoxColumn.DataPropertyName = "data_reserva";
-            this.datareservaDataGridViewTextBoxColumn.HeaderText = "data_reserva";
-            this.datareservaDataGridViewTextBoxColumn.Name = "datareservaDataGridViewTextBoxColumn";
-            this.datareservaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.datareservaDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // usuariidDataGridViewTextBoxColumn
-            // 
-            this.usuariidDataGridViewTextBoxColumn.DataPropertyName = "usuari_id";
-            this.usuariidDataGridViewTextBoxColumn.HeaderText = "usuari_id";
-            this.usuariidDataGridViewTextBoxColumn.Name = "usuariidDataGridViewTextBoxColumn";
-            this.usuariidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eventidDataGridViewTextBoxColumn
-            // 
-            this.eventidDataGridViewTextBoxColumn.DataPropertyName = "event_id";
-            this.eventidDataGridViewTextBoxColumn.HeaderText = "event_id";
-            this.eventidDataGridViewTextBoxColumn.Name = "eventidDataGridViewTextBoxColumn";
-            this.eventidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // butacaidDataGridViewTextBoxColumn
-            // 
-            this.butacaidDataGridViewTextBoxColumn.DataPropertyName = "butaca_id";
-            this.butacaidDataGridViewTextBoxColumn.HeaderText = "butaca_id";
-            this.butacaidDataGridViewTextBoxColumn.Name = "butacaidDataGridViewTextBoxColumn";
-            this.butacaidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSourceReserves
-            // 
-            this.bindingSourceReserves.DataSource = typeof(evencat.Models.Reserves);
-            // 
             // FormReservationsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,10 +297,10 @@
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReservations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserves)).EndInit();
             this.panelDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceReserves)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

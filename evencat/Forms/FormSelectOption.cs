@@ -13,8 +13,6 @@ namespace evencat
 {
     public partial class FormSelectOption : Form
     {
-        private Form parentForm;
-
 
 
 
@@ -25,6 +23,8 @@ namespace evencat
         public FormSelectOption()
         {
             InitializeComponent();
+
+
 
 
         }
@@ -69,7 +69,10 @@ namespace evencat
 
             MakeRoundedMethods.makeRoundedPanel(panelSelectButton, 15);
 
+
             panelSelectButton.BackColor = AppColors.grayBackground;
+
+
 
 
 
@@ -97,23 +100,44 @@ namespace evencat
             //this.DialogResult = DialogResult.OK;
 
 
+            if (UserSession.Role != "Organitzador")
+            {
 
-            using (var formUsersManagement = new FormUsersManagement()) {
+                using (var formUsersManagement = new FormUsersManagement())
+                {
+                    this.Hide();
+
+                    if (formUsersManagement.ShowDialog() == DialogResult.OK)
+                    {
+
+                        this.Show();
+
+                    }
+                    else
+                    {
+
+                        this.Close();
+
+                    }
+
+                }
+            }
+            else {
+
+                FormReservationsManagement formReservationsManagement = new FormReservationsManagement();
                 this.Hide();
+                formReservationsManagement.ShowDialog();
 
-                if (formUsersManagement.ShowDialog() == DialogResult.OK)
+                if (formReservationsManagement.DialogResult == DialogResult.Cancel || formReservationsManagement.DialogResult == DialogResult.OK)
                 {
 
                     this.Show();
 
                 }
-                else {
 
-                    this.Close();
-
-                }
 
             }
+
 
 
 

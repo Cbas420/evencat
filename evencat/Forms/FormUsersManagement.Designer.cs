@@ -36,6 +36,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBoxOrderBy = new System.Windows.Forms.ComboBox();
             this.buttonCreateUser = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -50,8 +52,6 @@
             this.buttonAllReservations = new System.Windows.Forms.Button();
             this.buttonSaveEdit = new System.Windows.Forms.Button();
             this.buttonCancelEdit = new System.Windows.Forms.Button();
-            this.descripcioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usuariidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,21 +107,40 @@
             this.dataGridViewUsers.EnableHeadersVisualStyles = false;
             this.dataGridViewUsers.Location = new System.Drawing.Point(7, 5);
             this.dataGridViewUsers.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewUsers.MultiSelect = false;
             this.dataGridViewUsers.Name = "dataGridViewUsers";
             this.dataGridViewUsers.ReadOnly = true;
             this.dataGridViewUsers.RowHeadersVisible = false;
             this.dataGridViewUsers.RowHeadersWidth = 45;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsers.Size = new System.Drawing.Size(852, 259);
             this.dataGridViewUsers.TabIndex = 5;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.nomDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // descripcioDataGridViewTextBoxColumn
+            // 
+            this.descripcioDataGridViewTextBoxColumn.DataPropertyName = "descripcio";
+            this.descripcioDataGridViewTextBoxColumn.HeaderText = "descripcio";
+            this.descripcioDataGridViewTextBoxColumn.Name = "descripcioDataGridViewTextBoxColumn";
+            this.descripcioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcioDataGridViewTextBoxColumn.Width = 150;
             // 
             // comboBoxOrderBy
             // 
             this.comboBoxOrderBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxOrderBy.FormattingEnabled = true;
             this.comboBoxOrderBy.Items.AddRange(new object[] {
-            "All",
             "ID",
             "Name",
             "Role",
@@ -164,6 +183,7 @@
             this.buttonDelete.TabIndex = 18;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // panelSearch
             // 
@@ -263,6 +283,7 @@
             this.buttonSaveEdit.Text = "Save";
             this.buttonSaveEdit.UseVisualStyleBackColor = true;
             this.buttonSaveEdit.Visible = false;
+            this.buttonSaveEdit.Click += new System.EventHandler(this.buttonSaveEdit_Click);
             // 
             // buttonCancelEdit
             // 
@@ -275,24 +296,6 @@
             this.buttonCancelEdit.UseVisualStyleBackColor = true;
             this.buttonCancelEdit.Visible = false;
             this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
-            // 
-            // descripcioDataGridViewTextBoxColumn
-            // 
-            this.descripcioDataGridViewTextBoxColumn.DataPropertyName = "descripcio";
-            this.descripcioDataGridViewTextBoxColumn.HeaderText = "descripcio";
-            this.descripcioDataGridViewTextBoxColumn.Name = "descripcioDataGridViewTextBoxColumn";
-            this.descripcioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcioDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.nomDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 150;
             // 
             // usuariidDataGridViewTextBoxColumn
             // 

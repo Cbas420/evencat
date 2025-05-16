@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelSpacesManagement = new System.Windows.Forms.Label();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.comboBoxCurrentState = new System.Windows.Forms.ComboBox();
+            this.comboBoxCurrentSeats = new System.Windows.Forms.ComboBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSpaceName = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -42,11 +42,10 @@
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dataGridViewSpaces = new System.Windows.Forms.DataGridView();
             this.buttonCheckAllEvents = new System.Windows.Forms.Button();
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
             this.buttonCancelEdit = new System.Windows.Forms.Button();
             this.buttonSaveEdit = new System.Windows.Forms.Button();
-            this.buttonChangeStatus = new System.Windows.Forms.Button();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
             this.espaiidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ubicacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +74,7 @@
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.panelSearch.Controls.Add(this.comboBoxCurrentState);
+            this.panelSearch.Controls.Add(this.comboBoxCurrentSeats);
             this.panelSearch.Controls.Add(this.buttonSearch);
             this.panelSearch.Controls.Add(this.textBoxSpaceName);
             this.panelSearch.Location = new System.Drawing.Point(49, 99);
@@ -83,14 +82,18 @@
             this.panelSearch.Size = new System.Drawing.Size(859, 41);
             this.panelSearch.TabIndex = 3;
             // 
-            // comboBoxCurrentState
+            // comboBoxCurrentSeats
             // 
-            this.comboBoxCurrentState.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxCurrentState.FormattingEnabled = true;
-            this.comboBoxCurrentState.Location = new System.Drawing.Point(597, 7);
-            this.comboBoxCurrentState.Name = "comboBoxCurrentState";
-            this.comboBoxCurrentState.Size = new System.Drawing.Size(140, 26);
-            this.comboBoxCurrentState.TabIndex = 7;
+            this.comboBoxCurrentSeats.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCurrentSeats.FormattingEnabled = true;
+            this.comboBoxCurrentSeats.Items.AddRange(new object[] {
+            "All",
+            "Unassigned seats",
+            "Assigned seats"});
+            this.comboBoxCurrentSeats.Location = new System.Drawing.Point(597, 7);
+            this.comboBoxCurrentSeats.Name = "comboBoxCurrentSeats";
+            this.comboBoxCurrentSeats.Size = new System.Drawing.Size(140, 26);
+            this.comboBoxCurrentSeats.TabIndex = 7;
             // 
             // buttonSearch
             // 
@@ -101,6 +104,7 @@
             this.buttonSearch.TabIndex = 6;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxSpaceName
             // 
@@ -120,6 +124,7 @@
             this.buttonDelete.TabIndex = 8;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonEdit
             // 
@@ -141,15 +146,23 @@
             this.buttonCreateSpace.TabIndex = 10;
             this.buttonCreateSpace.Text = "Create space";
             this.buttonCreateSpace.UseVisualStyleBackColor = true;
+            this.buttonCreateSpace.Click += new System.EventHandler(this.buttonCreateSpace_Click);
             // 
             // comboBoxOrderBy
             // 
             this.comboBoxOrderBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxOrderBy.FormattingEnabled = true;
+            this.comboBoxOrderBy.Items.AddRange(new object[] {
+            "ID",
+            "Space name",
+            "Location",
+            "Square meters",
+            "Assigned seats"});
             this.comboBoxOrderBy.Location = new System.Drawing.Point(56, 165);
             this.comboBoxOrderBy.Name = "comboBoxOrderBy";
             this.comboBoxOrderBy.Size = new System.Drawing.Size(140, 26);
             this.comboBoxOrderBy.TabIndex = 8;
+            this.comboBoxOrderBy.SelectedIndexChanged += new System.EventHandler(this.comboBoxOrderBy_SelectedIndexChanged);
             // 
             // panelDataGridView
             // 
@@ -162,19 +175,21 @@
             // 
             // dataGridViewSpaces
             // 
+            this.dataGridViewSpaces.AllowUserToAddRows = false;
+            this.dataGridViewSpaces.AllowUserToDeleteRows = false;
             this.dataGridViewSpaces.AutoGenerateColumns = false;
             this.dataGridViewSpaces.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSpaces.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSpaces.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewSpaces.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSpaces.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSpaces.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSpaces.ColumnHeadersHeight = 35;
             this.dataGridViewSpaces.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.espaiidDataGridViewTextBoxColumn,
@@ -185,8 +200,11 @@
             this.dataGridViewSpaces.DataSource = this.bindingSourceSpacesDataGrid;
             this.dataGridViewSpaces.EnableHeadersVisualStyles = false;
             this.dataGridViewSpaces.Location = new System.Drawing.Point(16, 5);
+            this.dataGridViewSpaces.MultiSelect = false;
             this.dataGridViewSpaces.Name = "dataGridViewSpaces";
+            this.dataGridViewSpaces.ReadOnly = true;
             this.dataGridViewSpaces.RowHeadersVisible = false;
+            this.dataGridViewSpaces.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSpaces.Size = new System.Drawing.Size(843, 247);
             this.dataGridViewSpaces.TabIndex = 5;
             // 
@@ -200,28 +218,6 @@
             this.buttonCheckAllEvents.Text = "Check all events";
             this.buttonCheckAllEvents.UseVisualStyleBackColor = true;
             this.buttonCheckAllEvents.Click += new System.EventHandler(this.buttonCheckAllEvents_Click);
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::evencat.Resource1.evencatLogoWhite;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(902, 12);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(53, 53);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogo.TabIndex = 6;
-            this.pictureBoxLogo.TabStop = false;
-            // 
-            // pictureBoxMenuIcon
-            // 
-            this.pictureBoxMenuIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxMenuIcon.Image = global::evencat.Resource1.menuIconWhite;
-            this.pictureBoxMenuIcon.Location = new System.Drawing.Point(12, 15);
-            this.pictureBoxMenuIcon.Name = "pictureBoxMenuIcon";
-            this.pictureBoxMenuIcon.Size = new System.Drawing.Size(53, 53);
-            this.pictureBoxMenuIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxMenuIcon.TabIndex = 1;
-            this.pictureBoxMenuIcon.TabStop = false;
-            this.pictureBoxMenuIcon.Click += new System.EventHandler(this.pictureBoxMenuIcon_Click);
             // 
             // buttonCancelEdit
             // 
@@ -245,17 +241,29 @@
             this.buttonSaveEdit.Text = "Save";
             this.buttonSaveEdit.UseVisualStyleBackColor = true;
             this.buttonSaveEdit.Visible = false;
+            this.buttonSaveEdit.Click += new System.EventHandler(this.buttonSaveEdit_Click);
             // 
-            // buttonChangeStatus
+            // pictureBoxLogo
             // 
-            this.buttonChangeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonChangeStatus.Location = new System.Drawing.Point(255, 491);
-            this.buttonChangeStatus.Name = "buttonChangeStatus";
-            this.buttonChangeStatus.Size = new System.Drawing.Size(143, 30);
-            this.buttonChangeStatus.TabIndex = 18;
-            this.buttonChangeStatus.Text = "Change status";
-            this.buttonChangeStatus.UseVisualStyleBackColor = true;
-            this.buttonChangeStatus.Visible = false;
+            this.pictureBoxLogo.Image = global::evencat.Resource1.evencatLogoWhite;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(902, 12);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(53, 53);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 6;
+            this.pictureBoxLogo.TabStop = false;
+            // 
+            // pictureBoxMenuIcon
+            // 
+            this.pictureBoxMenuIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxMenuIcon.Image = global::evencat.Resource1.menuIconWhite;
+            this.pictureBoxMenuIcon.Location = new System.Drawing.Point(12, 15);
+            this.pictureBoxMenuIcon.Name = "pictureBoxMenuIcon";
+            this.pictureBoxMenuIcon.Size = new System.Drawing.Size(53, 53);
+            this.pictureBoxMenuIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxMenuIcon.TabIndex = 1;
+            this.pictureBoxMenuIcon.TabStop = false;
+            this.pictureBoxMenuIcon.Click += new System.EventHandler(this.pictureBoxMenuIcon_Click);
             // 
             // espaiidDataGridViewTextBoxColumn
             // 
@@ -264,6 +272,7 @@
             this.espaiidDataGridViewTextBoxColumn.FillWeight = 150F;
             this.espaiidDataGridViewTextBoxColumn.HeaderText = "espai_id";
             this.espaiidDataGridViewTextBoxColumn.Name = "espaiidDataGridViewTextBoxColumn";
+            this.espaiidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nomDataGridViewTextBoxColumn
             // 
@@ -272,6 +281,7 @@
             this.nomDataGridViewTextBoxColumn.FillWeight = 150F;
             this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
             this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ubicacioDataGridViewTextBoxColumn
             // 
@@ -280,6 +290,7 @@
             this.ubicacioDataGridViewTextBoxColumn.FillWeight = 150F;
             this.ubicacioDataGridViewTextBoxColumn.HeaderText = "ubicacio";
             this.ubicacioDataGridViewTextBoxColumn.Name = "ubicacioDataGridViewTextBoxColumn";
+            this.ubicacioDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // metresquadratsDataGridViewTextBoxColumn
             // 
@@ -288,6 +299,7 @@
             this.metresquadratsDataGridViewTextBoxColumn.FillWeight = 150F;
             this.metresquadratsDataGridViewTextBoxColumn.HeaderText = "metres_quadrats";
             this.metresquadratsDataGridViewTextBoxColumn.Name = "metresquadratsDataGridViewTextBoxColumn";
+            this.metresquadratsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // cadiresfixesDataGridViewTextBoxColumn
             // 
@@ -296,6 +308,7 @@
             this.cadiresfixesDataGridViewTextBoxColumn.FillWeight = 150F;
             this.cadiresfixesDataGridViewTextBoxColumn.HeaderText = "cadires_fixes";
             this.cadiresfixesDataGridViewTextBoxColumn.Name = "cadiresfixesDataGridViewTextBoxColumn";
+            this.cadiresfixesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindingSourceSpacesDataGrid
             // 
@@ -307,7 +320,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(967, 531);
-            this.Controls.Add(this.buttonChangeStatus);
             this.Controls.Add(this.buttonCancelEdit);
             this.Controls.Add(this.buttonSaveEdit);
             this.Controls.Add(this.buttonCheckAllEvents);
@@ -339,7 +351,7 @@
         private System.Windows.Forms.Label labelSpacesManagement;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.TextBox textBoxSpaceName;
-        private System.Windows.Forms.ComboBox comboBoxCurrentState;
+        private System.Windows.Forms.ComboBox comboBoxCurrentSeats;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonEdit;
@@ -358,6 +370,5 @@
         private System.Windows.Forms.Button buttonCheckAllEvents;
         private System.Windows.Forms.Button buttonCancelEdit;
         private System.Windows.Forms.Button buttonSaveEdit;
-        private System.Windows.Forms.Button buttonChangeStatus;
     }
 }
