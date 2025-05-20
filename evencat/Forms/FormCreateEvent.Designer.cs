@@ -38,25 +38,25 @@
             this.panelSearch = new System.Windows.Forms.Panel();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.dataGridViewSpaces = new System.Windows.Forms.DataGridView();
-            this.textBoxEventImage = new System.Windows.Forms.TextBox();
-            this.textBoxEventName = new System.Windows.Forms.TextBox();
-            this.panelDataGridView = new System.Windows.Forms.Panel();
-            this.textBoxEventDescription = new System.Windows.Forms.TextBox();
-            this.labelNewEvent = new System.Windows.Forms.Label();
-            this.panelNewEvent = new System.Windows.Forms.Panel();
             this.espaiidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ubicacioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metresquadratsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cadiresfixesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceSpaces = new System.Windows.Forms.BindingSource(this.components);
+            this.textBoxEventImage = new System.Windows.Forms.TextBox();
+            this.textBoxEventName = new System.Windows.Forms.TextBox();
+            this.panelDataGridView = new System.Windows.Forms.Panel();
+            this.textBoxEventDescription = new System.Windows.Forms.TextBox();
+            this.labelNewEvent = new System.Windows.Forms.Label();
+            this.panelNewEvent = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).BeginInit();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpaces)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpaces)).BeginInit();
             this.panelDataGridView.SuspendLayout();
             this.panelNewEvent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpaces)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreateEvent
@@ -167,6 +167,49 @@
             this.dataGridViewSpaces.Size = new System.Drawing.Size(580, 293);
             this.dataGridViewSpaces.TabIndex = 5;
             // 
+            // espaiidDataGridViewTextBoxColumn
+            // 
+            this.espaiidDataGridViewTextBoxColumn.DataPropertyName = "espai_id";
+            this.espaiidDataGridViewTextBoxColumn.HeaderText = "espai_id";
+            this.espaiidDataGridViewTextBoxColumn.Name = "espaiidDataGridViewTextBoxColumn";
+            this.espaiidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.espaiidDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ubicacioDataGridViewTextBoxColumn
+            // 
+            this.ubicacioDataGridViewTextBoxColumn.DataPropertyName = "ubicacio";
+            this.ubicacioDataGridViewTextBoxColumn.HeaderText = "ubicacio";
+            this.ubicacioDataGridViewTextBoxColumn.Name = "ubicacioDataGridViewTextBoxColumn";
+            this.ubicacioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ubicacioDataGridViewTextBoxColumn.Width = 110;
+            // 
+            // metresquadratsDataGridViewTextBoxColumn
+            // 
+            this.metresquadratsDataGridViewTextBoxColumn.DataPropertyName = "metres_quadrats";
+            this.metresquadratsDataGridViewTextBoxColumn.HeaderText = "metres_quadrats";
+            this.metresquadratsDataGridViewTextBoxColumn.Name = "metresquadratsDataGridViewTextBoxColumn";
+            this.metresquadratsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.metresquadratsDataGridViewTextBoxColumn.Width = 145;
+            // 
+            // cadiresfixesDataGridViewTextBoxColumn
+            // 
+            this.cadiresfixesDataGridViewTextBoxColumn.DataPropertyName = "cadires_fixes";
+            this.cadiresfixesDataGridViewTextBoxColumn.HeaderText = "cadires_fixes";
+            this.cadiresfixesDataGridViewTextBoxColumn.Name = "cadiresfixesDataGridViewTextBoxColumn";
+            this.cadiresfixesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cadiresfixesDataGridViewTextBoxColumn.Width = 145;
+            // 
+            // bindingSourceSpaces
+            // 
+            this.bindingSourceSpaces.DataSource = typeof(evencat.Models.Espais);
+            // 
             // textBoxEventImage
             // 
             this.textBoxEventImage.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -232,49 +275,6 @@
             this.panelNewEvent.Size = new System.Drawing.Size(297, 313);
             this.panelNewEvent.TabIndex = 45;
             // 
-            // espaiidDataGridViewTextBoxColumn
-            // 
-            this.espaiidDataGridViewTextBoxColumn.DataPropertyName = "espai_id";
-            this.espaiidDataGridViewTextBoxColumn.HeaderText = "espai_id";
-            this.espaiidDataGridViewTextBoxColumn.Name = "espaiidDataGridViewTextBoxColumn";
-            this.espaiidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.espaiidDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ubicacioDataGridViewTextBoxColumn
-            // 
-            this.ubicacioDataGridViewTextBoxColumn.DataPropertyName = "ubicacio";
-            this.ubicacioDataGridViewTextBoxColumn.HeaderText = "ubicacio";
-            this.ubicacioDataGridViewTextBoxColumn.Name = "ubicacioDataGridViewTextBoxColumn";
-            this.ubicacioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ubicacioDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // metresquadratsDataGridViewTextBoxColumn
-            // 
-            this.metresquadratsDataGridViewTextBoxColumn.DataPropertyName = "metres_quadrats";
-            this.metresquadratsDataGridViewTextBoxColumn.HeaderText = "metres_quadrats";
-            this.metresquadratsDataGridViewTextBoxColumn.Name = "metresquadratsDataGridViewTextBoxColumn";
-            this.metresquadratsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.metresquadratsDataGridViewTextBoxColumn.Width = 145;
-            // 
-            // cadiresfixesDataGridViewTextBoxColumn
-            // 
-            this.cadiresfixesDataGridViewTextBoxColumn.DataPropertyName = "cadires_fixes";
-            this.cadiresfixesDataGridViewTextBoxColumn.HeaderText = "cadires_fixes";
-            this.cadiresfixesDataGridViewTextBoxColumn.Name = "cadiresfixesDataGridViewTextBoxColumn";
-            this.cadiresfixesDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cadiresfixesDataGridViewTextBoxColumn.Width = 145;
-            // 
-            // bindingSourceSpaces
-            // 
-            this.bindingSourceSpaces.DataSource = typeof(evencat.Models.Espais);
-            // 
             // FormCreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +286,7 @@
             this.Controls.Add(this.pictureBoxMenuIcon);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormCreateEvent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateEvent";
@@ -295,10 +296,10 @@
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSpaces)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpaces)).EndInit();
             this.panelDataGridView.ResumeLayout(false);
             this.panelNewEvent.ResumeLayout(false);
             this.panelNewEvent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceSpaces)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

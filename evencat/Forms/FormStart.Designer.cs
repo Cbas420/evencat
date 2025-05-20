@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStart));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonNext = new System.Windows.Forms.Button();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -94,14 +95,16 @@
             this.labelEvencat.TabIndex = 2;
             this.labelEvencat.Text = "EVENCAT";
             // 
-            // Form1
+            // FormStart
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(138)))), ((int)(((byte)(191)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelEvencat);
             this.Controls.Add(this.pictureBoxLogoWhite);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);

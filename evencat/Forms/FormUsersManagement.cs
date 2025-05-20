@@ -20,14 +20,6 @@ namespace evencat
         {
             InitializeComponent();
 
-            //PENDIENTE. HACER LA EDICIÓN Y QUE SE GUARDE
-            //BLOQUEAR ACCIONES DEPENDIENDO DE USUARIO
-            //HACER DELETE
-            //AGREGAR FILTROS
-            //AGREGAR BUSQUEDA POR NOMBRE
-            //AGREGAR ORDENAR POR (TOMAR EN CUENTA LOS FILTROS)
-
-
             // Verificar rol para habilitar/deshabilitar funciones
             if (UserSession.Role != "Superadministrador")
             {

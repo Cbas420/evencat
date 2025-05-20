@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSelectOption));
             this.panelSelectButton = new System.Windows.Forms.Panel();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.buttonSpacesManagement = new System.Windows.Forms.Button();
@@ -102,6 +103,8 @@
             this.ClientSize = new System.Drawing.Size(967, 531);
             this.Controls.Add(this.panelSelectButton);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSelectOption";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FormSelectOption_Load);

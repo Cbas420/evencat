@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEventsManagement));
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.labelEventsManagement = new System.Windows.Forms.Label();
             this.pictureBoxMenuIcon = new System.Windows.Forms.PictureBox();
@@ -40,6 +41,11 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.dataGridViewEvents = new System.Windows.Forms.DataGridView();
+            this.imatge_promocional_url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDataGridView = new System.Windows.Forms.Panel();
+            this.buttonCreateEvent = new System.Windows.Forms.Button();
+            this.buttonCancelEdit = new System.Windows.Forms.Button();
+            this.buttonSaveEdit = new System.Windows.Forms.Button();
             this.eventidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,18 +53,13 @@
             this.estatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.espaiidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.organitzadoridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imatge_promocional_url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceEventsDataGrid = new System.Windows.Forms.BindingSource(this.components);
-            this.panelDataGridView = new System.Windows.Forms.Panel();
-            this.buttonCreateEvent = new System.Windows.Forms.Button();
-            this.buttonCancelEdit = new System.Windows.Forms.Button();
-            this.buttonSaveEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuIcon)).BeginInit();
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEventsDataGrid)).BeginInit();
             this.panelDataGridView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEventsDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxLogo
@@ -172,14 +173,14 @@
             this.dataGridViewEvents.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewEvents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewEvents.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEvents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEvents.ColumnHeadersHeight = 35;
             this.dataGridViewEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.eventidDataGridViewTextBoxColumn,
@@ -200,6 +201,58 @@
             this.dataGridViewEvents.Size = new System.Drawing.Size(843, 260);
             this.dataGridViewEvents.TabIndex = 5;
             this.dataGridViewEvents.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewEvents_CellValidating);
+            // 
+            // imatge_promocional_url
+            // 
+            this.imatge_promocional_url.DataPropertyName = "imatge_promocional_url";
+            this.imatge_promocional_url.HeaderText = "imatge_promocional_url";
+            this.imatge_promocional_url.Name = "imatge_promocional_url";
+            this.imatge_promocional_url.ReadOnly = true;
+            this.imatge_promocional_url.Width = 210;
+            // 
+            // panelDataGridView
+            // 
+            this.panelDataGridView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
+            this.panelDataGridView.Controls.Add(this.dataGridViewEvents);
+            this.panelDataGridView.Location = new System.Drawing.Point(49, 215);
+            this.panelDataGridView.Name = "panelDataGridView";
+            this.panelDataGridView.Size = new System.Drawing.Size(869, 275);
+            this.panelDataGridView.TabIndex = 18;
+            // 
+            // buttonCreateEvent
+            // 
+            this.buttonCreateEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreateEvent.Location = new System.Drawing.Point(747, 496);
+            this.buttonCreateEvent.Name = "buttonCreateEvent";
+            this.buttonCreateEvent.Size = new System.Drawing.Size(161, 26);
+            this.buttonCreateEvent.TabIndex = 19;
+            this.buttonCreateEvent.Text = "Create event";
+            this.buttonCreateEvent.UseVisualStyleBackColor = true;
+            this.buttonCreateEvent.Click += new System.EventHandler(this.buttonCreateEvent_Click);
+            // 
+            // buttonCancelEdit
+            // 
+            this.buttonCancelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelEdit.Location = new System.Drawing.Point(152, 496);
+            this.buttonCancelEdit.Name = "buttonCancelEdit";
+            this.buttonCancelEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonCancelEdit.TabIndex = 25;
+            this.buttonCancelEdit.Text = "Cancel";
+            this.buttonCancelEdit.UseVisualStyleBackColor = true;
+            this.buttonCancelEdit.Visible = false;
+            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
+            // 
+            // buttonSaveEdit
+            // 
+            this.buttonSaveEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveEdit.Location = new System.Drawing.Point(49, 496);
+            this.buttonSaveEdit.Name = "buttonSaveEdit";
+            this.buttonSaveEdit.Size = new System.Drawing.Size(97, 30);
+            this.buttonSaveEdit.TabIndex = 24;
+            this.buttonSaveEdit.Text = "Save";
+            this.buttonSaveEdit.UseVisualStyleBackColor = true;
+            this.buttonSaveEdit.Visible = false;
+            this.buttonSaveEdit.Click += new System.EventHandler(this.buttonSaveEdit_Click);
             // 
             // eventidDataGridViewTextBoxColumn
             // 
@@ -257,61 +310,9 @@
             this.organitzadoridDataGridViewTextBoxColumn.ReadOnly = true;
             this.organitzadoridDataGridViewTextBoxColumn.Width = 150;
             // 
-            // imatge_promocional_url
-            // 
-            this.imatge_promocional_url.DataPropertyName = "imatge_promocional_url";
-            this.imatge_promocional_url.HeaderText = "imatge_promocional_url";
-            this.imatge_promocional_url.Name = "imatge_promocional_url";
-            this.imatge_promocional_url.ReadOnly = true;
-            this.imatge_promocional_url.Width = 210;
-            // 
             // bindingSourceEventsDataGrid
             // 
             this.bindingSourceEventsDataGrid.DataSource = typeof(evencat.Models.Esdeveniments);
-            // 
-            // panelDataGridView
-            // 
-            this.panelDataGridView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(46)))), ((int)(((byte)(64)))));
-            this.panelDataGridView.Controls.Add(this.dataGridViewEvents);
-            this.panelDataGridView.Location = new System.Drawing.Point(49, 215);
-            this.panelDataGridView.Name = "panelDataGridView";
-            this.panelDataGridView.Size = new System.Drawing.Size(869, 275);
-            this.panelDataGridView.TabIndex = 18;
-            // 
-            // buttonCreateEvent
-            // 
-            this.buttonCreateEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreateEvent.Location = new System.Drawing.Point(747, 496);
-            this.buttonCreateEvent.Name = "buttonCreateEvent";
-            this.buttonCreateEvent.Size = new System.Drawing.Size(161, 26);
-            this.buttonCreateEvent.TabIndex = 19;
-            this.buttonCreateEvent.Text = "Create event";
-            this.buttonCreateEvent.UseVisualStyleBackColor = true;
-            this.buttonCreateEvent.Click += new System.EventHandler(this.buttonCreateEvent_Click);
-            // 
-            // buttonCancelEdit
-            // 
-            this.buttonCancelEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancelEdit.Location = new System.Drawing.Point(152, 496);
-            this.buttonCancelEdit.Name = "buttonCancelEdit";
-            this.buttonCancelEdit.Size = new System.Drawing.Size(97, 30);
-            this.buttonCancelEdit.TabIndex = 25;
-            this.buttonCancelEdit.Text = "Cancel";
-            this.buttonCancelEdit.UseVisualStyleBackColor = true;
-            this.buttonCancelEdit.Visible = false;
-            this.buttonCancelEdit.Click += new System.EventHandler(this.buttonCancelEdit_Click);
-            // 
-            // buttonSaveEdit
-            // 
-            this.buttonSaveEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveEdit.Location = new System.Drawing.Point(49, 496);
-            this.buttonSaveEdit.Name = "buttonSaveEdit";
-            this.buttonSaveEdit.Size = new System.Drawing.Size(97, 30);
-            this.buttonSaveEdit.TabIndex = 24;
-            this.buttonSaveEdit.Text = "Save";
-            this.buttonSaveEdit.UseVisualStyleBackColor = true;
-            this.buttonSaveEdit.Visible = false;
-            this.buttonSaveEdit.Click += new System.EventHandler(this.buttonSaveEdit_Click);
             // 
             // FormEventsManagement
             // 
@@ -328,6 +329,8 @@
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelDataGridView);
             this.Controls.Add(this.buttonCreateEvent);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEventsManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEventsManagement";
@@ -337,8 +340,8 @@
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEvents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEventsDataGrid)).EndInit();
             this.panelDataGridView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEventsDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

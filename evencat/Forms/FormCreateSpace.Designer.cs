@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateSpace));
             this.textBoxNumberSeats = new System.Windows.Forms.TextBox();
             this.buttonCreateSpace = new System.Windows.Forms.Button();
             this.textBoxSquareMeters = new System.Windows.Forms.TextBox();
@@ -35,8 +36,8 @@
             this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.panelTitle = new System.Windows.Forms.Panel();
-            this.labelDescription = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.labelDescription = new System.Windows.Forms.Label();
             this.panelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +120,16 @@
             this.panelTitle.Size = new System.Drawing.Size(367, 69);
             this.panelTitle.TabIndex = 24;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::evencat.Resource1.evencatLogoBlack;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(58, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
@@ -129,16 +140,6 @@
             this.labelDescription.TabIndex = 1;
             this.labelDescription.Text = "CREATE SPACE";
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::evencat.Resource1.evencatLogoBlack;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // FormCreateSpace
             // 
@@ -152,6 +153,8 @@
             this.Controls.Add(this.textBoxLocation);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.panelTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCreateSpace";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateSpace";

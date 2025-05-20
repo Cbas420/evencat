@@ -131,12 +131,6 @@
     <Compile Include="Forms\FormLogIn.Designer.cs">
       <DependentUpon>FormLogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormTransparency.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormTransparency.Designer.cs">
-      <DependentUpon>FormTransparency.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormUsersManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormLogIn.resx">
       <DependentUpon>FormLogIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormTransparency.resx">
-      <DependentUpon>FormTransparency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUsersManagement.resx">
       <DependentUpon>FormUsersManagement.cs</DependentUpon>
